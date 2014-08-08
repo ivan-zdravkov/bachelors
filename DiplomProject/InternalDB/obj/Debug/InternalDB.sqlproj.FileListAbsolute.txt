@@ -1,0 +1,5 @@
+D:\Documents\DiplomProject\DiplomProject\InternalDB\bin\Debug\InternalDB.dacpac
+D:\Documents\DiplomProject\DiplomProject\InternalDB\bin\Debug\InternalDB.dll
+D:\Documents\DiplomProject\DiplomProject\InternalDB\bin\Debug\InternalDB.pdb
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\InternalDB.dll
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\InternalDB.pdb
