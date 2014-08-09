@@ -9,6 +9,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InternalDB", "InternalDB\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{2C9B62F1-BB82-4C29-A461-6CE7E6E45511}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalDAL", "InternalDAL\InternalDAL.csproj", "{9C90E083-1640-4CB7-97D5-DE7B9CA5D158}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{2C9B62F1-BB82-4C29-A461-6CE7E6E45511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9B62F1-BB82-4C29-A461-6CE7E6E45511}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9B62F1-BB82-4C29-A461-6CE7E6E45511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C90E083-1640-4CB7-97D5-DE7B9CA5D158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C90E083-1640-4CB7-97D5-DE7B9CA5D158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C90E083-1640-4CB7-97D5-DE7B9CA5D158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C90E083-1640-4CB7-97D5-DE7B9CA5D158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -87,7 +87,4 @@
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Seed\IdentityTables\CreateIndexes.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="InternalDB.refactorlog" />
-  </ItemGroup>
 </Project>
