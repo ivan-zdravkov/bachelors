@@ -53,3 +53,5 @@ D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Microsoft.Owin.Security.Mic
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.pdb
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Resources.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Resources.pdb

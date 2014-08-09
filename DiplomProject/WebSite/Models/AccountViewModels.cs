@@ -5,7 +5,7 @@ namespace WebSite.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "UserName", ResourceType = typeof(Resources.Bulgarian))]
         public string UserName { get; set; }
     }
 
@@ -13,56 +13,56 @@ namespace WebSite.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "CurrentPassword", ResourceType = typeof(Resources.Bulgarian))]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, MinimumLength = 6, ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "MinLength")]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "NewPassword", ResourceType = typeof(Resources.Bulgarian))]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "ConfirmNewPassword", ResourceType = typeof(Resources.Bulgarian))]
+        [Compare("NewPassword", ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "NewPasswordMismatch")]
         public string ConfirmPassword { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "UserName", ResourceType = typeof(Resources.Bulgarian))]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password", ResourceType = typeof(Resources.Bulgarian))]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "RememberMe", ResourceType = typeof(Resources.Bulgarian))]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "UserName", ResourceType = typeof(Resources.Bulgarian))]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, MinimumLength = 6, ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "MinLength")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password", ResourceType = typeof(Resources.Bulgarian))]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(Resources.Bulgarian))]
+        [Compare("Password", ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "PasswordMismatch")]
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.")]
-        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage="This is not a valid Email address")]
+        [StringLength(255, ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "MaxLength")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessageResourceType = typeof(Resources.Bulgarian), ErrorMessageResourceName = "InvalidEmail")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }

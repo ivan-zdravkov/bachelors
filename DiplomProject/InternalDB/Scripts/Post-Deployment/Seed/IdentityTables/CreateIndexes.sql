@@ -1,5 +1,5 @@
 ﻿CREATE NONCLUSTERED INDEX [IX_User_Id]
-    ON [dbo].[AspNetUserClaims]([UserId] ASC)
+    ON [dbo].[AspNetUserClaims]([User_Id] ASC)
 
 CREATE NONCLUSTERED INDEX [IX_UserId]
     ON [dbo].[AspNetUserLogins]([UserId] ASC)
