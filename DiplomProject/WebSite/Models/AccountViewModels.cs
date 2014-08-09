@@ -59,5 +59,12 @@ namespace WebSite.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage="This is not a valid Email address")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 }

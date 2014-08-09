@@ -75,6 +75,10 @@
     <Build Include="IdentityTables\AspNetUserLogins.sql" />
     <Build Include="IdentityTables\AspNetUserRoles.sql" />
     <Build Include="IdentityTables\AspNetUsers.sql" />
+    <Build Include="Facility.sql" />
+    <Build Include="Address.sql" />
+    <Build Include="Contact.sql" />
+    <Build Include="PersonalDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Initialize\Initialize.sql" />
