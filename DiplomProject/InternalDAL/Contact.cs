@@ -26,6 +26,10 @@ namespace InternalDAL
         public string Fax { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual ICollection<Facility> Facility { get; set; }
         public virtual ICollection<PersonalDetails> PersonalDetails { get; set; }

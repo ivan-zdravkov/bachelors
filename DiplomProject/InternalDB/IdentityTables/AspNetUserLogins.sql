@@ -2,7 +2,10 @@
 	[UserId]			nvarchar(128)			NOT NULL,
     [LoginProvider]		nvarchar(128)			NOT NULL,
     [ProviderKey]		nvarchar(128)			NOT NULL,
-	[LastModifiedBy]	int						NULL, 
+	
+	[CreatedBy]			nvarchar(128)			NULL,
+	[CreatedAt]			datetime				NULL,
+	[LastModifiedBy]	nvarchar(128)			NULL,
 	[LastModifiedAt]	datetime				NULL,
 
 	CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED ([UserId] ASC, [LoginProvider] ASC, [ProviderKey] ASC),

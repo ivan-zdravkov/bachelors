@@ -29,6 +29,7 @@ namespace InternalDAL
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<Facility> Facility { get; set; }

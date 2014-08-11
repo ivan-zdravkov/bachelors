@@ -20,6 +20,10 @@ namespace InternalDAL
         public string LastName { get; set; }
         public Nullable<int> AddressId { get; set; }
         public Nullable<int> ContactId { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }

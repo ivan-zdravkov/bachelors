@@ -1,12 +1,14 @@
-﻿using System;
+﻿using InternalDAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebSite.EntityFramework;
 
 namespace WebSite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

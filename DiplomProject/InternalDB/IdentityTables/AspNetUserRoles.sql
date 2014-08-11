@@ -1,6 +1,11 @@
 ﻿CREATE TABLE [dbo].[AspNetUserRoles](
-	[UserId]		nvarchar(128)		NOT NULL,
-    [RoleId]		nvarchar(128)		NOT NULL,
+	[UserId]			nvarchar(128)		NOT NULL,
+    [RoleId]			nvarchar(128)		NOT NULL,
+
+	[CreatedBy]			nvarchar(128)			NULL,
+	[CreatedAt]			datetime				NULL,
+	[LastModifiedBy]	nvarchar(128)			NULL,
+	[LastModifiedAt]	datetime				NULL,
 
 	CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED ([UserId] ASC, [RoleId] ASC),
 	CONSTRAINT [FK_AspNetUserRoles_AspNetRole] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[AspNetRoles] ([Id]) ON DELETE CASCADE,

@@ -18,7 +18,9 @@ namespace InternalDAL
         public string ClaimType { get; set; }
         public string ClaimValue { get; set; }
         public string User_Id { get; set; }
-        public Nullable<int> LastModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }

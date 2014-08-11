@@ -55,3 +55,11 @@ D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.pdb
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Resources.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Resources.pdb
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\InternalDAL.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Net.Http.Formatting.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.WebHost.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\InternalDAL.pdb
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Net.Http.Formatting.xml
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.xml
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.WebHost.xml

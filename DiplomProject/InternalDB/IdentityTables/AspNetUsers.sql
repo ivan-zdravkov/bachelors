@@ -7,5 +7,10 @@
 	[Email]					nvarchar(255)			NOT NULL,
 	[PersonalDetailsId]		int						NULL,
 
+	[CreatedBy]				nvarchar(128)			NULL,
+	[CreatedAt]				datetime				NULL,
+	[LastModifiedBy]		nvarchar(128)			NULL,
+	[LastModifiedAt]		datetime				NULL,
+
 	CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
 )

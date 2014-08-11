@@ -18,8 +18,8 @@ namespace InternalDAL
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
             this.Facility = new HashSet<Facility>();
-            this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
         public string Id { get; set; }
@@ -29,10 +29,14 @@ namespace InternalDAL
         public string Discriminator { get; set; }
         public string Email { get; set; }
         public Nullable<int> PersonalDetailsId { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual ICollection<Facility> Facility { get; set; }
-        public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }
 }

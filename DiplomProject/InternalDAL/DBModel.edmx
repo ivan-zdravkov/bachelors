@@ -14,6 +14,10 @@
           <Property Name="Town" Type="nvarchar" MaxLength="50" />
           <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
           <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -21,7 +25,9 @@
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
@@ -32,7 +38,9 @@
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
           <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetUserLogins">
@@ -44,7 +52,9 @@
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
@@ -54,6 +64,10 @@
           </Key>
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -66,6 +80,10 @@
           <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PersonalDetailsId" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -77,6 +95,10 @@
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
           <Property Name="Website" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="Facility">
           <Key>
@@ -87,6 +109,10 @@
           <Property Name="ManagerId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AddressId" Type="int" Nullable="false" />
           <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="PersonalDetails">
           <Key>
@@ -98,6 +124,10 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AddressId" Type="int" />
           <Property Name="ContactId" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
         <Association Name="FK_AspNetUserClaims_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -276,6 +306,10 @@
           <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Facility" Relationship="Self.FK_FacilityDetails_Address" FromRole="Address" ToRole="Facility" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_Address" FromRole="Address" ToRole="PersonalDetails" />
         </EntityType>
@@ -285,9 +319,11 @@
           </Key>
           <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_AspNetUserRoles_AspNetRole" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -297,7 +333,9 @@
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
@@ -310,9 +348,25 @@
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastModifiedBy" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.FK_AspNetUserRoles_AspNetRole" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserRoles_AspNetUser" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -325,10 +379,14 @@
           <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PersonalDetailsId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_AspNetUserRoles_AspNetUser" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
           <NavigationProperty Name="Facility" Relationship="Self.FK_Facility_AspNetUsers" FromRole="AspNetUsers" ToRole="Facility" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -340,6 +398,10 @@
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Facility" Relationship="Self.FK_FacilityDetails_Contact" FromRole="Contact" ToRole="Facility" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_Contact" FromRole="Contact" ToRole="PersonalDetails" />
         </EntityType>
@@ -352,6 +414,10 @@
           <Property Name="ManagerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressId" Type="Int32" Nullable="false" />
           <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Address" Relationship="Self.FK_FacilityDetails_Address" FromRole="Facility" ToRole="Address" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Facility_AspNetUsers" FromRole="Facility" ToRole="AspNetUsers" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_FacilityDetails_Contact" FromRole="Facility" ToRole="Contact" />
@@ -366,6 +432,10 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressId" Type="Int32" />
           <Property Name="ContactId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Address" Relationship="Self.FK_PersonalDetails_Address" FromRole="PersonalDetails" ToRole="Address" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_PersonalDetails_Contact" FromRole="PersonalDetails" ToRole="Contact" />
         </EntityType>
@@ -393,6 +463,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetRole">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AspNetUserClaims_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -417,6 +501,20 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -457,15 +555,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="InternalDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Contact" EntityType="Self.Contact" />
           <EntitySet Name="Facility" EntityType="Self.Facility" />
@@ -478,6 +573,10 @@
             <End Role="Address" EntitySet="Address" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRole" Association="Self.FK_AspNetUserRoles_AspNetRole">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -485,6 +584,10 @@
           <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="Self.FK_AspNetUserLogins_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUser" Association="Self.FK_AspNetUserRoles_AspNetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Facility_AspNetUsers" Association="Self.FK_Facility_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -497,10 +600,6 @@
           <AssociationSet Name="FK_PersonalDetails_Contact" Association="Self.FK_PersonalDetails_Contact">
             <End Role="Contact" EntitySet="Contact" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -517,6 +616,10 @@
                 <ScalarProperty Name="Town" ColumnName="Town" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="Address1" ColumnName="Address" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -525,6 +628,8 @@
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
@@ -537,6 +642,8 @@
                 <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
@@ -548,6 +655,20 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="InternalDBModel.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
@@ -563,6 +684,10 @@
                 <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PersonalDetailsId" ColumnName="PersonalDetailsId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -575,6 +700,10 @@
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -586,6 +715,10 @@
                 <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -598,17 +731,13 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="InternalDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

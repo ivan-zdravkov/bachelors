@@ -60,6 +60,9 @@
     <Compile Include="AspNetUserLogins.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AspNetUserRoles.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspNetUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -90,13 +93,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>

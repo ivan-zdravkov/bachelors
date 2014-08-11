@@ -3,7 +3,10 @@
 	[ClaimType]			nvarchar(max)			NULL,
 	[ClaimValue]		nvarchar(max)			NULL,
 	[User_Id]			nvarchar(128)			NOT NULL,
-	[LastModifiedBy]	int						NULL, 
+	
+	[CreatedBy]			nvarchar(128)			NULL,
+	[CreatedAt]			datetime				NULL,
+	[LastModifiedBy]	nvarchar(128)			NULL,
 	[LastModifiedAt]	datetime				NULL,
 
 	CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED ([Id] ASC),

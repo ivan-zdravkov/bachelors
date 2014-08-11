@@ -25,6 +25,10 @@ namespace InternalDAL
         public string Town { get; set; }
         public string PostCode { get; set; }
         public string Address1 { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual ICollection<Facility> Facility { get; set; }
         public virtual ICollection<PersonalDetails> PersonalDetails { get; set; }

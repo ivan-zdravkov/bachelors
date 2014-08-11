@@ -17,7 +17,9 @@ namespace InternalDAL
         public string UserId { get; set; }
         public string LoginProvider { get; set; }
         public string ProviderKey { get; set; }
-        public Nullable<int> LastModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }

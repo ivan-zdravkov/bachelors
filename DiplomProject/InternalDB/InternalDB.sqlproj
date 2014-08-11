@@ -87,4 +87,10 @@
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Seed\IdentityTables\CreateIndexes.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\IdentityTables\AspNetUsers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\IdentityTables\AspNetUserRoles.sql" />
+  </ItemGroup>
 </Project>

@@ -16,14 +16,16 @@ namespace InternalDAL
     {
         public AspNetRoles()
         {
-            this.AspNetUsers = new HashSet<AspNetUsers>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> LastModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
+        public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
     }
 }

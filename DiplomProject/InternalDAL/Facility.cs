@@ -19,6 +19,10 @@ namespace InternalDAL
         public string ManagerId { get; set; }
         public int AddressId { get; set; }
         public int ContactId { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string LastModifiedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual Address Address { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
