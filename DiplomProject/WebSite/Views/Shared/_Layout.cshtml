@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +33,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="pull-left">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <span class="dropdown pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="languageSelect" data-toggle="dropdown">Език / Language <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">@Html.ActionLink(Resources.Bulgarian, "SetCulture", "Home", new { culture = "bg" }, new { role = "menuitem", @class = "image-flag-bg" })</li>
+                    <li role="presentation">@Html.ActionLink(Resources.English, "SetCulture", "Home", new { culture = "en" }, new { role = "menuitem", @class = "image-flag-en" })</li>
+                </ul>
+            </span>
         </footer>
     </div>
 

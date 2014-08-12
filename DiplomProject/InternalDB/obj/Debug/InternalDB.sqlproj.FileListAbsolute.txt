@@ -3,3 +3,7 @@ D:\Documents\DiplomProject\DiplomProject\InternalDB\bin\Debug\InternalDB.dll
 D:\Documents\DiplomProject\DiplomProject\InternalDB\bin\Debug\InternalDB.pdb
 D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\InternalDB.dll
 D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\InternalDB.pdb
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\Model.xml
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\refactor.xml
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\postdeploy.sql
+D:\Documents\DiplomProject\DiplomProject\InternalDB\obj\Debug\predeploy.sql
