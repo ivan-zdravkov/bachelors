@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MVC = System.Web.Mvc;
+
 
 namespace WebSite.Models
 {
@@ -7,6 +9,14 @@ namespace WebSite.Models
         [Required]
         [Display(Name = "UserName", ResourceType = typeof(Resources.Resources))]
         public string UserName { get; set; }
+
+        [Required]
+        [MVC.Remote("EmailAlreadyInUse", "Account", AdditionalFields = "UserName", ErrorMessageResourceName = "EmailAlreadyInUse", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [StringLength(255, ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "MaxLength")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "InvalidEmail")]
+        [Display(Name = "Email", ResourceType = typeof(Resources.Resources))]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
     }
 
     public class ManageUserViewModel
@@ -60,7 +70,7 @@ namespace WebSite.Models
         [Compare("Password", ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "PasswordMismatch")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required, MVC.Remote("EmailAlreadyInUse", "Email", ErrorMessageResourceName = "EmailAlreadyInUse", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(255, ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "MaxLength")]
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "InvalidEmail")]
         [DataType(DataType.EmailAddress)]

@@ -138,6 +138,12 @@
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current password</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailAlreadyInUse" xml:space="preserve">
+    <value>This Email is already in use</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>

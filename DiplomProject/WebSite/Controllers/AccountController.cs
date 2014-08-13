@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using WebSite.Models;
+using WebSite.EntityFramework;
 
 namespace WebSite.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
@@ -93,6 +94,13 @@ namespace WebSite.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult EmailAlreadyInUse(string Email)
+        {
+            var aspNetUser = DB.AspNetUsers.FirstOrDefault(user => user.Email == Email);
+            return Json(aspNetUser == null, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -265,7 +273,7 @@ namespace WebSite.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

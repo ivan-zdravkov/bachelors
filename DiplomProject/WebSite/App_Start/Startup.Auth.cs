@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 
 namespace WebSite
@@ -24,15 +25,19 @@ namespace WebSite
             //    clientId: "",
             //    clientSecret: "");
 
+            app.UseFacebookAuthentication(
+               appId: "784318734952476",
+               appSecret: "4b513e63cf379aa47c240cd108bbe258");
+
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "801642808328-vqkin25u1gjrc7nm8bbahos02pfdodsc.apps.googleusercontent.com",
+                ClientSecret = "z-Q7kcJIn37l9InRjZC5PPVN"
+            });
         }
     }
 }
