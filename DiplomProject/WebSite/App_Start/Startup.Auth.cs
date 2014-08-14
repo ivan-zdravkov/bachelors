@@ -29,9 +29,9 @@ namespace WebSite
                appId: "784318734952476",
                appSecret: "4b513e63cf379aa47c240cd108bbe258");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "g4r5pZijNxkGwtfQ52RUUk0zq",
+               consumerSecret: "k0C4aiD4yQj8zxBkvBj5dcUUXlmNQCnkgmxe3uyIAdlATXLckC");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
