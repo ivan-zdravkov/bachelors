@@ -70,11 +70,65 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Акаунт.
+        /// </summary>
+        public static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ТУ Фитнес.
+        /// </summary>
+        public static string ApplicationName {
+            get {
+                return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обвържете своя.
+        /// </summary>
+        public static string AssociateYour {
+            get {
+                return ResourceManager.GetString("AssociateYour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Форма за обвързване.
+        /// </summary>
+        public static string AssociationForm {
+            get {
+                return ResourceManager.GetString("AssociationForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Български.
         /// </summary>
         public static string Bulgarian {
             get {
                 return ResourceManager.GetString("Bulgarian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Промяна на парола.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Форма за смяна на паролата.
+        /// </summary>
+        public static string ChangePasswordForm {
+            get {
+                return ResourceManager.GetString("ChangePasswordForm", resourceCulture);
             }
         }
         
@@ -115,11 +169,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Създаване на нов акаунт..
+        /// </summary>
+        public static string CreateANewAccount {
+            get {
+                return ResourceManager.GetString("CreateANewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Създайте локален акаунт.
+        /// </summary>
+        public static string CreateLocalLogin {
+            get {
+                return ResourceManager.GetString("CreateLocalLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Текуща парола.
         /// </summary>
         public static string CurrentPassword {
             get {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрирайте се.
+        /// </summary>
+        public static string DoRegister {
+            get {
+                return ResourceManager.GetString("DoRegister", resourceCulture);
             }
         }
         
@@ -151,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Моля въведете потребителско име за този сайт и натиснете бутона за Регистрация за да създадете своя акунт и да влезете в системата..
+        /// </summary>
+        public static string EnterUserName {
+            get {
+                return ResourceManager.GetString("EnterUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Грешка.
         /// </summary>
         public static string Error {
@@ -178,6 +268,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Начална страница.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ако нямате локален акаунт..
+        /// </summary>
+        public static string IfYouDontHaveALocalAccount {
+            get {
+                return ResourceManager.GetString("IfYouDontHaveALocalAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Това не е валиден Email адрес..
         /// </summary>
         public static string InvalidEmail {
@@ -196,11 +304,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Грешка при вход.
+        /// </summary>
+        public static string LoginFailure {
+            get {
+                return ResourceManager.GetString("LoginFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Изход.
         /// </summary>
         public static string LogOff {
             get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Управление на акаунт.
+        /// </summary>
+        public static string ManageAccount {
+            get {
+                return ResourceManager.GetString("ManageAccount", resourceCulture);
             }
         }
         
@@ -241,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Нямате &lt;em&gt;потребителско име / парола&lt;/em&gt; за тази система. Създайте акаунт за да можете да влезете в сайта, без използването на външна система..
+        /// </summary>
+        public static string NoLocalUserName {
+            get {
+                return ResourceManager.GetString("NoLocalUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Парола.
         /// </summary>
         public static string Password {
@@ -277,11 +412,74 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Премахни.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запазете парола.
+        /// </summary>
+        public static string SetPassword {
+            get {
+                return ResourceManager.GetString("SetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Успешно се аутентикирахте с.
+        /// </summary>
+        public static string SuccessfulAuthentication {
+            get {
+                return ResourceManager.GetString("SuccessfulAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неуспешен вход, чрез външна система..
+        /// </summary>
+        public static string UnsuccessfulLoginWithService {
+            get {
+                return ResourceManager.GetString("UnsuccessfulLoginWithService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Използвайте локален акаунт за вход в системата..
+        /// </summary>
+        public static string UseALocalAccountToLogIn {
+            get {
+                return ResourceManager.GetString("UseALocalAccountToLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Използвайте друга система за достъп..
+        /// </summary>
+        public static string UseAnotherServiceToLogIn {
+            get {
+                return ResourceManager.GetString("UseAnotherServiceToLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Потребителско име.
         /// </summary>
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В системата сте, като .
+        /// </summary>
+        public static string YouAreLoggedInAs {
+            get {
+                return ResourceManager.GetString("YouAreLoggedInAs", resourceCulture);
             }
         }
     }

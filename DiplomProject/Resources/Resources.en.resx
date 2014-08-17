@@ -120,8 +120,26 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>TU Fitness</value>
+  </data>
+  <data name="AssociateYour" xml:space="preserve">
+    <value>Associate your</value>
+  </data>
+  <data name="AssociationForm" xml:space="preserve">
+    <value>Association Form</value>
+  </data>
   <data name="Bulgarian" xml:space="preserve">
     <value>Български</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePasswordForm" xml:space="preserve">
+    <value>Change Password Form</value>
   </data>
   <data name="ChooseYourLanguage" xml:space="preserve">
     <value>Choose a language </value>
@@ -135,8 +153,17 @@
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="CreateANewAccount" xml:space="preserve">
+    <value>Create a new account.</value>
+  </data>
+  <data name="CreateLocalLogin" xml:space="preserve">
+    <value>Create Local Login</value>
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current password</value>
+  </data>
+  <data name="DoRegister" xml:space="preserve">
+    <value>Register</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -147,6 +174,9 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="EnterUserName" xml:space="preserve">
+    <value>Please enter a user name for this site below and click the Register button to finish logging in.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -156,14 +186,26 @@
   <data name="Hello" xml:space="preserve">
     <value>Hello, </value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="IfYouDontHaveALocalAccount" xml:space="preserve">
+    <value>if you don't have a local account.</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>This email is invalid</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="LoginFailure" xml:space="preserve">
+    <value>Login Failure</value>
+  </data>
   <data name="LogOff" xml:space="preserve">
     <value>Log off</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Manage Account</value>
   </data>
   <data name="MaxLength" xml:space="preserve">
     <value>The {0} shouldn't be more than {1} characters</value>
@@ -177,6 +219,9 @@
   <data name="NewPasswordMismatch" xml:space="preserve">
     <value>The new password and the confirmation password do not match</value>
   </data>
+  <data name="NoLocalUserName" xml:space="preserve">
+    <value>You do not have a local username/password for this site. Add a local account so you can log in without an external login.</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -189,7 +234,28 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me ?</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Set Password</value>
+  </data>
+  <data name="SuccessfulAuthentication" xml:space="preserve">
+    <value>You've successfully authenticated with</value>
+  </data>
+  <data name="UnsuccessfulLoginWithService" xml:space="preserve">
+    <value>Unsuccessful login with service.</value>
+  </data>
+  <data name="UseALocalAccountToLogIn" xml:space="preserve">
+    <value>Use a local account to log in.</value>
+  </data>
+  <data name="UseAnotherServiceToLogIn" xml:space="preserve">
+    <value>Use another service to log in.</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>User Name</value>
+  </data>
+  <data name="YouAreLoggedInAs" xml:space="preserve">
+    <value>You're logged in as</value>
   </data>
 </root>
