@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EntityFramework\BaseApiController.cs" />
     <Compile Include="EntityFramework\BaseController.cs" />
     <Compile Include="EntityFramework\EntityHelpers.cs" />
     <Compile Include="EntityFramework\ExtendedDBContext.cs" />
@@ -188,6 +189,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebApi\AccessControlController.cs" />
+    <Compile Include="WebApi\PaymentSystemController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
