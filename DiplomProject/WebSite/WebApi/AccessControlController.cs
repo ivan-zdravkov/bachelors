@@ -49,5 +49,41 @@ namespace WebSite.WebApi
 
             return response;
         }
+
+        [HttpPost]
+        public HttpResponseMessage PostTest_Authorize_OK(string token)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response.StatusCode = HttpStatusCode.OK;
+
+            return response;
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetTest_Authorize_OK(string token)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response.StatusCode = HttpStatusCode.OK;
+
+            return response;
+        }
+
+        [HttpPost]
+        public HttpResponseMessage PostTest_Authorize_Unathorized(string token)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response.StatusCode = HttpStatusCode.Unauthorized;
+
+            return response;
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetTest_Authorize_Unathorized(string token)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response.StatusCode = HttpStatusCode.Unauthorized;
+
+            return response;
+        }
     }
 }
