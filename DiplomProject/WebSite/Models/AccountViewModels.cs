@@ -70,7 +70,7 @@ namespace WebSite.Models
         [Compare("Password", ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "PasswordMismatch")]
         public string ConfirmPassword { get; set; }
 
-        [Required, MVC.Remote("EmailAlreadyInUse", "Email", ErrorMessageResourceName = "EmailAlreadyInUse", ErrorMessageResourceType = typeof(Resources.Resources))]
+        [Required, MVC.Remote("EmailAlreadyInUse", "Account", ErrorMessageResourceName = "EmailAlreadyInUse", ErrorMessageResourceType = typeof(Resources.Resources))]
         [StringLength(255, ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "MaxLength")]
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "InvalidEmail")]
         [DataType(DataType.EmailAddress)]

@@ -35,8 +35,8 @@ namespace WebSite
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "801642808328-vqkin25u1gjrc7nm8bbahos02pfdodsc.apps.googleusercontent.com",
-                ClientSecret = "z-Q7kcJIn37l9InRjZC5PPVN"
+                ClientId = "801642808328-tsntm1bquhtasphkbtfmco1h037hdc4o.apps.googleusercontent.com",
+                ClientSecret = "w0eptdrc-2ouR-vhydOmtcr1"
             });
         }
     }
