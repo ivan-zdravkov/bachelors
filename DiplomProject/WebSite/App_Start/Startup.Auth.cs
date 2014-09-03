@@ -33,11 +33,11 @@ namespace WebSite
                consumerKey: "g4r5pZijNxkGwtfQ52RUUk0zq",
                consumerSecret: "k0C4aiD4yQj8zxBkvBj5dcUUXlmNQCnkgmxe3uyIAdlATXLckC");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            /*app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = "801642808328-tsntm1bquhtasphkbtfmco1h037hdc4o.apps.googleusercontent.com",
                 ClientSecret = "w0eptdrc-2ouR-vhydOmtcr1"
-            });
+            });*/
         }
     }
 }

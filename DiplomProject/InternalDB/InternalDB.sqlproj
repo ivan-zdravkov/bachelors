@@ -79,6 +79,8 @@
     <Build Include="Address.sql" />
     <Build Include="Contact.sql" />
     <Build Include="PersonalDetails.sql" />
+    <None Include="Scripts\Post-Deployment\Seed\Address.sql" />
+    <Build Include="SubscriptionPlan.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Initialize\Initialize.sql" />
@@ -92,5 +94,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Seed\IdentityTables\AspNetUserRoles.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\Contact.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\Facility.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\SubscriptionPlan.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\PersonalDetails.sql" />
   </ItemGroup>
 </Project>
