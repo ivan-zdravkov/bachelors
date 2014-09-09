@@ -81,6 +81,7 @@
     <Build Include="PersonalDetails.sql" />
     <None Include="Scripts\Post-Deployment\Seed\Address.sql" />
     <Build Include="SubscriptionPlan.sql" />
+    <Build Include="PaymentHistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Initialize\Initialize.sql" />
