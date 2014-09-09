@@ -12,11 +12,11 @@ namespace InternalDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRoles
+    public partial class AspNetRole
     {
-        public AspNetRoles()
+        public AspNetRole()
         {
-            this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRole>();
         }
     
         public string Id { get; set; }
@@ -26,6 +26,6 @@ namespace InternalDAL
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
     }
 }

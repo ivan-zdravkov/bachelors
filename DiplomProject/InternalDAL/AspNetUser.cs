@@ -12,14 +12,16 @@ namespace InternalDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUsers
+    public partial class AspNetUser
     {
-        public AspNetUsers()
+        public AspNetUser()
         {
-            this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
-            this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
-            this.AspNetUserRoles = new HashSet<AspNetUserRoles>();
-            this.Facility = new HashSet<Facility>();
+            this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
+            this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRole>();
+            this.Facilities = new HashSet<Facility>();
+            this.PaymentHistories = new HashSet<PaymentHistory>();
+            this.PaymentHistories1 = new HashSet<PaymentHistory>();
         }
     
         public string Id { get; set; }
@@ -34,9 +36,11 @@ namespace InternalDAL
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual ICollection<Facility> Facility { get; set; }
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual ICollection<Facility> Facilities { get; set; }
+        public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
+        public virtual ICollection<PaymentHistory> PaymentHistories1 { get; set; }
     }
 }

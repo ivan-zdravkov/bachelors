@@ -25,14 +25,16 @@ namespace InternalDAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Address { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Contact> Contact { get; set; }
-        public virtual DbSet<Facility> Facility { get; set; }
-        public virtual DbSet<PersonalDetails> PersonalDetails { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Facility> Facilities { get; set; }
+        public virtual DbSet<PaymentHistory> PaymentHistories { get; set; }
+        public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
+        public virtual DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
     }
 }

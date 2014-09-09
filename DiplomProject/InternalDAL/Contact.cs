@@ -16,8 +16,8 @@ namespace InternalDAL
     {
         public Contact()
         {
-            this.Facility = new HashSet<Facility>();
-            this.PersonalDetails = new HashSet<PersonalDetails>();
+            this.Facilities = new HashSet<Facility>();
+            this.PersonalDetails = new HashSet<PersonalDetail>();
         }
     
         public int Id { get; set; }
@@ -31,7 +31,7 @@ namespace InternalDAL
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual ICollection<Facility> Facility { get; set; }
-        public virtual ICollection<PersonalDetails> PersonalDetails { get; set; }
+        public virtual ICollection<Facility> Facilities { get; set; }
+        public virtual ICollection<PersonalDetail> PersonalDetails { get; set; }
     }
 }

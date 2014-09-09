@@ -12,16 +12,22 @@ namespace InternalDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserRoles
+    public partial class PersonalDetail
     {
-        public string UserId { get; set; }
-        public string RoleId { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<int> AddressId { get; set; }
+        public Nullable<int> ContactId { get; set; }
+        public Nullable<int> SubscriptionPlanId { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual AspNetRoles AspNetRoles { get; set; }
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Contact Contact { get; set; }
+        public virtual SubscriptionPlan SubscriptionPlan { get; set; }
     }
 }

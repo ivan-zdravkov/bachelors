@@ -12,20 +12,18 @@ namespace InternalDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Facility
+    public partial class PaymentHistory
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string ManagerId { get; set; }
-        public int AddressId { get; set; }
-        public int ContactId { get; set; }
+        public string RecepientId { get; set; }
+        public string IssuerId { get; set; }
+        public decimal Amount { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual Address Address { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Contact Contact { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
     }
 }

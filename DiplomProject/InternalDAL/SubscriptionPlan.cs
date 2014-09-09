@@ -12,17 +12,22 @@ namespace InternalDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserClaims
+    public partial class SubscriptionPlan
     {
+        public SubscriptionPlan()
+        {
+            this.PersonalDetails = new HashSet<PersonalDetail>();
+        }
+    
         public int Id { get; set; }
-        public string ClaimType { get; set; }
-        public string ClaimValue { get; set; }
-        public string User_Id { get; set; }
+        public bool UnlimitedAccess { get; set; }
+        public Nullable<System.DateTime> ActiveUntil { get; set; }
+        public int Credits { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string LastModifiedBy { get; set; }
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual ICollection<PersonalDetail> PersonalDetails { get; set; }
     }
 }
