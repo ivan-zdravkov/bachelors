@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+@using WebSite.Models.Subscription
+@using WebSite.Controllers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,8 +36,34 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="centercontents">
             <p class="pull-left">&copy; @DateTime.Now.Year - @Resources.ApplicationName</p>
+
+            @if (Request.IsAuthenticated)
+            {
+                SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
+
+                <span class="span5 center">
+                    @if (model.ActiveUntil.HasValue && model.ActiveUntil.Value > DateTime.Today)
+                    { 
+                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Subscribe", "Subscription")
+                    }
+                    else
+                    {
+                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Subscribe", "Subscription", new { }, new { style = "color: red;" })
+                    }
+                    |
+                    @if (model.Credits > 0)
+                    { 
+                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Subscribe", "Subscription")
+                    }
+                    else
+                    {
+                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Subscribe", "Subscription", new { }, new { style = "color: red;" })
+                    }
+                </span>
+            }
+
             <span class="dropdown pull-right">
                 <button class="btn btn-default dropdown-toggle" type="button" id="languageSelect" data-toggle="dropdown">Език / Language <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">

@@ -14,6 +14,11 @@ namespace InternalDAL
     
     public partial class PersonalDetail
     {
+        public PersonalDetail()
+        {
+            this.AspNetUsers = new HashSet<AspNetUser>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -29,5 +34,6 @@ namespace InternalDAL
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual SubscriptionPlan SubscriptionPlan { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

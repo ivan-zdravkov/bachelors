@@ -42,5 +42,6 @@ namespace InternalDAL
         public virtual ICollection<Facility> Facilities { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories1 { get; set; }
+        public virtual PersonalDetail PersonalDetail { get; set; }
     }
 }

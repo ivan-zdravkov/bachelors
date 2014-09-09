@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="InternalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="InternalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Id" />
@@ -212,6 +212,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AspNetUsers_PersonalDetails">
+          <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="PersonalDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facility_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
@@ -336,6 +348,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_PersonalDetails" Association="Self.FK_AspNetUsers_PersonalDetails">
+            <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_Facility_AspNetUsers" Association="Self.FK_Facility_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Facility" EntitySet="Facility" />
@@ -369,8 +385,7 @@
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InternalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -466,6 +481,7 @@
           <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_AspNetUsers" FromRole="AspNetUsers" ToRole="Facility" />
           <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PaymentHystory_Issuer" FromRole="AspNetUsers" ToRole="PaymentHistory" />
           <NavigationProperty Name="PaymentHistories1" Relationship="Self.FK_PaymentHystory_Recepient" FromRole="AspNetUsers" ToRole="PaymentHistory" />
+          <NavigationProperty Name="PersonalDetail" Relationship="InternalDBModel.FK_AspNetUsers_PersonalDetails" FromRole="AspNetUser" ToRole="PersonalDetail" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -534,6 +550,7 @@
           <NavigationProperty Name="Address" Relationship="Self.FK_PersonalDetails_Address" FromRole="PersonalDetails" ToRole="Address" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_PersonalDetails_Contact" FromRole="PersonalDetails" ToRole="Contact" />
           <NavigationProperty Name="SubscriptionPlan" Relationship="Self.FK_PersonalDetails_SubscriptionPlan" FromRole="PersonalDetails" ToRole="SubscriptionPlan" />
+          <NavigationProperty Name="AspNetUsers" Relationship="InternalDBModel.FK_AspNetUsers_PersonalDetails" FromRole="PersonalDetail" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="SubscriptionPlan">
           <Key>
@@ -761,7 +778,23 @@
             <End Role="SubscriptionPlan" EntitySet="SubscriptionPlans" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_PersonalDetails" Association="InternalDBModel.FK_AspNetUsers_PersonalDetails">
+            <End Role="PersonalDetail" EntitySet="PersonalDetails" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_AspNetUsers_PersonalDetails">
+          <End Type="InternalDBModel.PersonalDetail" Role="PersonalDetail" Multiplicity="0..1" />
+          <End Type="InternalDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="PersonalDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

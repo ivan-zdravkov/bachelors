@@ -12,5 +12,6 @@
 	[LastModifiedBy]		nvarchar(128)			NULL,
 	[LastModifiedAt]		datetime				NULL,
 
-	CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
+	CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_AspNetUsers_PersonalDetails] FOREIGN KEY ([PersonalDetailsId]) REFERENCES [dbo].[PersonalDetails] (Id),
 )

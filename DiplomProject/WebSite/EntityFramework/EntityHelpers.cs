@@ -13,5 +13,6 @@ namespace WebSite.EntityFramework
         {
             this.DB = new ExtendedDBContext();
         }
+
     }
 }

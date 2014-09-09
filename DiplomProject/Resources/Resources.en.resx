@@ -258,4 +258,10 @@
   <data name="YouAreLoggedInAs" xml:space="preserve">
     <value>You're logged in as</value>
   </data>
+  <data name="ActiveUntil" xml:space="preserve">
+    <value>Subscription Active Until</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Credits</value>
+  </data>
 </root>

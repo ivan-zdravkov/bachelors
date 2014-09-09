@@ -28,6 +28,7 @@
         <AssociationConnector Association="InternalDBModel.FK_FacilityDetails_Contact" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_Contact" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_SubscriptionPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalDBModel.FK_AspNetUsers_PersonalDetails" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

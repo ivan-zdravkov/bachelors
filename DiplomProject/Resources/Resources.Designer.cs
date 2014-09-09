@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Абонамент, активен до.
+        /// </summary>
+        public static string ActiveUntil {
+            get {
+                return ResourceManager.GetString("ActiveUntil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ТУ Фитнес.
         /// </summary>
         public static string ApplicationName {
@@ -183,6 +192,15 @@ namespace Resources {
         public static string CreateLocalLogin {
             get {
                 return ResourceManager.GetString("CreateLocalLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кредити.
+        /// </summary>
+        public static string Credits {
+            get {
+                return ResourceManager.GetString("Credits", resourceCulture);
             }
         }
         
