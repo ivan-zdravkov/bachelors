@@ -12,6 +12,6 @@
 
 	CONSTRAINT [PK_Facility] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_Facility_AspNetUsers] FOREIGN KEY ([ManagerId]) REFERENCES [dbo].[AspNetUsers] (Id),
-	CONSTRAINT [FK_FacilityDetails_Address] FOREIGN KEY ([AddressId]) REFERENCES [dbo].[Address] (Id),
-	CONSTRAINT [FK_FacilityDetails_Contact] FOREIGN KEY ([ContactId]) REFERENCES [dbo].[Contact] (Id),
+	CONSTRAINT [FK_Facility_Address] FOREIGN KEY ([AddressId]) REFERENCES [dbo].[Address] (Id),
+	CONSTRAINT [FK_Facility_Contact] FOREIGN KEY ([ContactId]) REFERENCES [dbo].[Contact] (Id),
 )

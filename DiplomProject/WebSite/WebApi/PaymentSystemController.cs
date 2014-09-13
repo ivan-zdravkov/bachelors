@@ -9,7 +9,7 @@ using WebSite.EntityFramework;
 namespace WebSite.WebApi
 {
     public class PaymentSystemController : BaseApiController
-    {
+    {  
         public HttpResponseMessage LoadBalance(string userId, decimal amount)
         {
             return new HttpResponseMessage();

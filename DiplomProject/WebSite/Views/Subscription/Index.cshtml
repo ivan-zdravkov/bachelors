@@ -1,4 +1,6 @@
-﻿@model WebSite.Models.Subscription.SubscriptionCreditsModel
+﻿@using Microsoft.AspNet.Identity
+
+@model WebSite.Models.Subscription.SubscriptionCreditsModel
 
 @{
     ViewBag.Title = "Index";
@@ -8,11 +10,24 @@
 
 <div class="row">
     @if (!Model.UnlimitedAccess)
-    { 
+    {
+        string callback = "http://" + HttpContext.Current.Request.Url.Host + ":" + HttpContext.Current.Request.Url.Port + "/payment/PayPalPaymentNotification";
+        
         <div class="col-md-6">
             @Html.DisplayNameFor(model => model.ActiveUntil)
             @(Model.ActiveUntil.HasValue ? Model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----")
+            
+            <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
+                    data-button="buynow"
+                    data-name="Credits"
+                    data-quantity="1"
+                    data-amount="5.00"
+                    data-currency="GBP"
+                    data-callback=@callback
+                    data-custom=@HttpContext.Current.User.Identity.GetUserId()
+                    data-env="sandbox"></script>
         </div>
+
         <div class="col-md-6">
             @Html.DisplayNameFor(model => model.Credits)
             @Html.DisplayFor(model => model.Credits)

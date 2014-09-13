@@ -39,9 +39,9 @@ namespace InternalDAL
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual PersonalDetail PersonalDetail { get; set; }
         public virtual ICollection<Facility> Facilities { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories1 { get; set; }
-        public virtual PersonalDetail PersonalDetail { get; set; }
     }
 }

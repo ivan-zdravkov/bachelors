@@ -4,6 +4,8 @@
 	[RecepientId]			nvarchar(128)			NOT NULL,
 	[IssuerId]				nvarchar(128)			NOT NULL,
 	[Amount]				smallmoney				NOT NULL,
+	[Currency]				nvarchar(3)				NOT NULL,
+	[PayPalEmail]			nvarchar				NULL,
 
 	[CreatedBy]				nvarchar(128)			NULL,
 	[CreatedAt]				datetime				NULL,

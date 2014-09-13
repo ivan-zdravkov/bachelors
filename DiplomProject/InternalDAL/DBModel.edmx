@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="InternalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="InternalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Id" />
@@ -122,6 +122,8 @@
           <Property Name="RecepientId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="IssuerId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Amount" Type="smallmoney" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="PayPalEmail" Type="nvarchar" MaxLength="1" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
@@ -224,6 +226,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Facility_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Facility">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facility_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
@@ -236,19 +250,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FacilityDetails_Address">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Facility">
-              <PropertyRef Name="AddressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FacilityDetails_Contact">
+        <Association Name="FK_Facility_Contact">
           <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
           <ReferentialConstraint>
@@ -352,15 +354,15 @@
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Facility_Address" Association="Self.FK_Facility_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Facility" EntitySet="Facility" />
+          </AssociationSet>
           <AssociationSet Name="FK_Facility_AspNetUsers" Association="Self.FK_Facility_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Facility" EntitySet="Facility" />
           </AssociationSet>
-          <AssociationSet Name="FK_FacilityDetails_Address" Association="Self.FK_FacilityDetails_Address">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Facility" EntitySet="Facility" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FacilityDetails_Contact" Association="Self.FK_FacilityDetails_Contact">
+          <AssociationSet Name="FK_Facility_Contact" Association="Self.FK_Facility_Contact">
             <End Role="Contact" EntitySet="Contact" />
             <End Role="Facility" EntitySet="Facility" />
           </AssociationSet>
@@ -385,7 +387,8 @@
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InternalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -402,7 +405,7 @@
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Facilities" Relationship="Self.FK_FacilityDetails_Address" FromRole="Address" ToRole="Facility" />
+          <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_Address" FromRole="Address" ToRole="Facility" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_Address" FromRole="Address" ToRole="PersonalDetails" />
         </EntityType>
         <EntityType Name="AspNetRole">
@@ -478,10 +481,10 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_AspNetUserRoles_AspNetUser" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+          <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_AspNetUsers_PersonalDetails" FromRole="AspNetUsers" ToRole="PersonalDetails" />
           <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_AspNetUsers" FromRole="AspNetUsers" ToRole="Facility" />
           <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PaymentHystory_Issuer" FromRole="AspNetUsers" ToRole="PaymentHistory" />
           <NavigationProperty Name="PaymentHistories1" Relationship="Self.FK_PaymentHystory_Recepient" FromRole="AspNetUsers" ToRole="PaymentHistory" />
-          <NavigationProperty Name="PersonalDetail" Relationship="InternalDBModel.FK_AspNetUsers_PersonalDetails" FromRole="AspNetUser" ToRole="PersonalDetail" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -497,7 +500,7 @@
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Facilities" Relationship="Self.FK_FacilityDetails_Contact" FromRole="Contact" ToRole="Facility" />
+          <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_Contact" FromRole="Contact" ToRole="Facility" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_Contact" FromRole="Contact" ToRole="PersonalDetails" />
         </EntityType>
         <EntityType Name="Facility">
@@ -513,9 +516,9 @@
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_FacilityDetails_Address" FromRole="Facility" ToRole="Address" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Facility_Address" FromRole="Facility" ToRole="Address" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Facility_AspNetUsers" FromRole="Facility" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Contact" Relationship="Self.FK_FacilityDetails_Contact" FromRole="Facility" ToRole="Contact" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Facility_Contact" FromRole="Facility" ToRole="Contact" />
         </EntityType>
         <EntityType Name="PaymentHistory">
           <Key>
@@ -525,6 +528,8 @@
           <Property Name="RecepientId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IssuerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PayPalEmail" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -548,9 +553,9 @@
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Address" Relationship="Self.FK_PersonalDetails_Address" FromRole="PersonalDetails" ToRole="Address" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_PersonalDetails" FromRole="PersonalDetails" ToRole="AspNetUsers" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_PersonalDetails_Contact" FromRole="PersonalDetails" ToRole="Contact" />
           <NavigationProperty Name="SubscriptionPlan" Relationship="Self.FK_PersonalDetails_SubscriptionPlan" FromRole="PersonalDetails" ToRole="SubscriptionPlan" />
-          <NavigationProperty Name="AspNetUsers" Relationship="InternalDBModel.FK_AspNetUsers_PersonalDetails" FromRole="PersonalDetail" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="SubscriptionPlan">
           <Key>
@@ -566,7 +571,7 @@
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_SubscriptionPlan" FromRole="SubscriptionPlan" ToRole="PersonalDetails" />
         </EntityType>
-        <Association Name="FK_FacilityDetails_Address">
+        <Association Name="FK_Facility_Address">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
           <ReferentialConstraint>
@@ -646,6 +651,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AspNetUsers_PersonalDetails">
+          <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="PersonalDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facility_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
@@ -682,7 +699,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_FacilityDetails_Contact">
+        <Association Name="FK_Facility_Contact">
           <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
           <ReferentialConstraint>
@@ -730,7 +747,7 @@
           <EntitySet Name="PaymentHistories" EntityType="Self.PaymentHistory" />
           <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
           <EntitySet Name="SubscriptionPlans" EntityType="Self.SubscriptionPlan" />
-          <AssociationSet Name="FK_FacilityDetails_Address" Association="Self.FK_FacilityDetails_Address">
+          <AssociationSet Name="FK_Facility_Address" Association="Self.FK_Facility_Address">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Facility" EntitySet="Facilities" />
           </AssociationSet>
@@ -754,6 +771,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_PersonalDetails" Association="Self.FK_AspNetUsers_PersonalDetails">
+            <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_Facility_AspNetUsers" Association="Self.FK_Facility_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Facility" EntitySet="Facilities" />
@@ -766,7 +787,7 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="PaymentHistory" EntitySet="PaymentHistories" />
           </AssociationSet>
-          <AssociationSet Name="FK_FacilityDetails_Contact" Association="Self.FK_FacilityDetails_Contact">
+          <AssociationSet Name="FK_Facility_Contact" Association="Self.FK_Facility_Contact">
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="Facility" EntitySet="Facilities" />
           </AssociationSet>
@@ -778,23 +799,7 @@
             <End Role="SubscriptionPlan" EntitySet="SubscriptionPlans" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_PersonalDetails" Association="InternalDBModel.FK_AspNetUsers_PersonalDetails">
-            <End Role="PersonalDetail" EntitySet="PersonalDetails" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_AspNetUsers_PersonalDetails">
-          <End Type="InternalDBModel.PersonalDetail" Role="PersonalDetail" Multiplicity="0..1" />
-          <End Type="InternalDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PersonalDetail">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUser">
-              <PropertyRef Name="PersonalDetailsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -922,6 +927,8 @@
                 <ScalarProperty Name="RecepientId" ColumnName="RecepientId" />
                 <ScalarProperty Name="IssuerId" ColumnName="IssuerId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="PayPalEmail" ColumnName="PayPalEmail" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />

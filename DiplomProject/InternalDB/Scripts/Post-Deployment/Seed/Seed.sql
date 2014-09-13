@@ -6,7 +6,11 @@
 :r .\Address.sql
 ----------------------------------------------
 
--- REQUIRES dbo.AspNetRoles
+-- REQUIRES dbo.SubscriptionPlan, dbo.Contact, dbo.Address
+:r .\PersonalDetails.sql
+----------------------------------------------
+
+-- REQUIRES dbo.AspNetRoles, dbo.PersonalDetails
 :r .\IdentityTables\AspNetUsers.sql
 ----------------------------------------------
 
@@ -18,7 +22,5 @@
 :r .\Facility.sql
 ----------------------------------------------
 
--- REQUIRES dbo.SubscriptionPlan, dbo.Contact, dbo.Address
-:r .\PersonalDetails.sql
-----------------------------------------------
+
 

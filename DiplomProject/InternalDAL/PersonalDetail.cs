@@ -32,8 +32,8 @@ namespace InternalDAL
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual Address Address { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual SubscriptionPlan SubscriptionPlan { get; set; }
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

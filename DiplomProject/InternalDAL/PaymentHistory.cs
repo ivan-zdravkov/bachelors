@@ -18,6 +18,8 @@ namespace InternalDAL
         public string RecepientId { get; set; }
         public string IssuerId { get; set; }
         public decimal Amount { get; set; }
+        public string Currency { get; set; }
+        public string PayPalEmail { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string LastModifiedBy { get; set; }
