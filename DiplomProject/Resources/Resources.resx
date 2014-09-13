@@ -264,4 +264,10 @@
   <data name="Credits" xml:space="preserve">
     <value>Кредити</value>
   </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Абонамент</value>
+  </data>
+  <data name="UnlimitedAccess" xml:space="preserve">
+    <value>Неограничен достъп</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using WebSite.EntityFramework;
 using WebSite.Models.Subscription;
 
@@ -12,9 +13,23 @@ namespace WebSite.Controllers
 {
     public class SubscriptionController : BaseController
     {
+        [Authorize]
         public ActionResult Index()
         {
-            return View();
+            string userId = String.Empty;
+
+            userId = HttpContext.User.Identity.GetUserId();
+            AspNetUser user = DB.AspNetUsers.Find(userId);
+
+            PersonalDetail personalDetail = user.PersonalDetail;
+            SubscriptionCreditsModel model = new SubscriptionCreditsModel
+            {
+                ActiveUntil = personalDetail.SubscriptionPlan.ActiveUntil,
+                Credits = personalDetail.SubscriptionPlan.Credits,
+                UnlimitedAccess = personalDetail.SubscriptionPlan.UnlimitedAccess
+            };
+
+            return View(model);          
         }
 
         [NonAction]
@@ -54,15 +69,15 @@ namespace WebSite.Controllers
                 SubscriptionCreditsModel model = new SubscriptionCreditsModel()
                 {
                     ActiveUntil = personalDetail.SubscriptionPlan.ActiveUntil,
-                    Credits = personalDetail.SubscriptionPlan.Credits
+                    Credits = personalDetail.SubscriptionPlan.Credits,
+                    UnlimitedAccess = personalDetail.SubscriptionPlan.UnlimitedAccess,
                 };
 
                 return model;
             }
             else
             {
-                throw new InvalidOperationException(
-                    String.Format("You can't get the Subscription Details of a non existing user with UserId='{0}'", userId));
+                return null;
             }
         }
 	}

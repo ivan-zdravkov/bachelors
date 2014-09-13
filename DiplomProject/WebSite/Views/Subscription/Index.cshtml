@@ -1,0 +1,30 @@
+﻿@model WebSite.Models.Subscription.SubscriptionCreditsModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Resources.Subscription</h2>
+
+<div class="row">
+    @if (!Model.UnlimitedAccess)
+    { 
+        <div class="col-md-6">
+            @Html.DisplayNameFor(model => model.ActiveUntil)
+            @(Model.ActiveUntil.HasValue ? Model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----")
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayNameFor(model => model.Credits)
+            @Html.DisplayFor(model => model.Credits)
+        </div>
+    }
+    else
+    { 
+        <div class="col-md-12">
+            @Html.DisplayNameFor(model => model.UnlimitedAccess)
+            @Html.DisplayFor(model => model.UnlimitedAccess)
+        </div>
+    }
+
+    @Html.Hidden("HideFooter", new { }, new { id = "hideFooter" })
+</div>

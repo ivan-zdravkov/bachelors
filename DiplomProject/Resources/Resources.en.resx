@@ -264,4 +264,10 @@
   <data name="Credits" xml:space="preserve">
     <value>Credits</value>
   </data>
+  <data name="Subscription" xml:space="preserve">
+    <value>Subscription</value>
+  </data>
+  <data name="UnlimitedAccess" xml:space="preserve">
+    <value>UnlimitedAccess</value>
+  </data>
 </root>

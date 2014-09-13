@@ -13,5 +13,8 @@ namespace WebSite.Models.Subscription
 
         [Display(Name = "Credits", ResourceType = typeof(Resources.Resources))]
         public int Credits { get; set; }
+
+        [Display(Name = "UnlimitedAccess", ResourceType = typeof(Resources.Resources))]
+        public bool UnlimitedAccess { get; set; }
     }
 }

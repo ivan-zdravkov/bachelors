@@ -1,7 +1,7 @@
 ﻿-- dbo.AspNetUsers
 
 INSERT [dbo].[AspNetUsers] ([Id], [UserName], [PasswordHash], [SecurityStamp] , [Discriminator], [Email], [PersonalDetailsId], [CreatedAt]) 
-	VALUES (N'3bed7cb8-3c46-4312-a5dd-c407f377a587', N'SystemAdministrator', N'APP9gtvgN6cvsmOM3WZITyRJtkNqSp6mFIe+1UQOsURMWgOU+EJxcUDafZneZEPUDg==', N'bfc6489f-3720-419b-913c-a34e98078c80', N'ApplicationUser', N'IvanZdravkovBG@gmail.com', NULL, GETDATE())
+	VALUES (N'3bed7cb8-3c46-4312-a5dd-c407f377a587', N'SystemAdministrator', N'AIqC2uIdwXOrXh3lVvapXbII9InUiSjFwsu9PCFveLN8dBu3PmS61q7ZCBqybwCuhQ==', N'83e9fc3b-a3a3-4650-9dd1-5c11544fd7ad', N'ApplicationUser', N'IvanZdravkovBG@gmail.com', NULL, GETDATE())
 INSERT [dbo].[AspNetUsers] ([Id], [UserName], [PasswordHash], [SecurityStamp] , [Discriminator], [Email], [PersonalDetailsId], [CreatedAt]) 
 	VALUES (N'56e744bb-1619-41a7-9828-76083c50cbdb', N'Administrator', N'ALnz8NdzGrNt1tIhyTA7LsMkx4UPIu0YAr/HXHiqMea86czFbt6g/tzA9CYG5mi6+g==', N'b43130e9-3991-4de9-8651-f0245e4080fb', N'ApplicationUser', N'Administrator@tu.com', NULL, GETDATE())
 INSERT [dbo].[AspNetUsers] ([Id], [UserName], [PasswordHash], [SecurityStamp] , [Discriminator], [Email], [PersonalDetailsId], [CreatedAt]) 

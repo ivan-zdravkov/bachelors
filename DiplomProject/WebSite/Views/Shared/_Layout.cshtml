@@ -43,25 +43,35 @@
             {
                 SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
 
-                <span class="span5 center">
-                    @if (model.ActiveUntil.HasValue && model.ActiveUntil.Value > DateTime.Today)
-                    { 
-                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Subscribe", "Subscription")
-                    }
-                    else
-                    {
-                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Subscribe", "Subscription", new { }, new { style = "color: red;" })
-                    }
-                    |
-                    @if (model.Credits > 0)
-                    { 
-                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Subscribe", "Subscription")
-                    }
-                    else
-                    {
-                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Subscribe", "Subscription", new { }, new { style = "color: red;" })
-                    }
-                </span>
+                if (model != null && this.ViewContext.RouteData.GetRequiredString("controller") != "Subscription")
+                { 
+                    <span class="span5 center">
+                        @if (!model.UnlimitedAccess)
+                        { 
+                            if (model.ActiveUntil.HasValue && model.ActiveUntil.Value > DateTime.Today)
+                            { 
+                                @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription")
+                            }
+                            else
+                            {
+                                @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription", new { }, new { style = "color: red;" })
+                            }
+                            <span>|</span>
+                            if (model.Credits > 0)
+                            { 
+                                @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription")
+                            }
+                            else
+                            {
+                                @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription", new { }, new { style = "color: red;" })
+                            }
+                        }
+                        else 
+                        {
+                            @Html.ActionLink(Resources.UnlimitedAccess, "Index", "Subscription")
+                        }
+                    </span>
+                }
             }
 
             <span class="dropdown pull-right">

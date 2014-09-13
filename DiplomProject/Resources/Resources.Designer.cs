@@ -448,11 +448,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Абонамент.
+        /// </summary>
+        public static string Subscription {
+            get {
+                return ResourceManager.GetString("Subscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Успешно се аутентикирахте с.
         /// </summary>
         public static string SuccessfulAuthentication {
             get {
                 return ResourceManager.GetString("SuccessfulAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неограничен достъп.
+        /// </summary>
+        public static string UnlimitedAccess {
+            get {
+                return ResourceManager.GetString("UnlimitedAccess", resourceCulture);
             }
         }
         
