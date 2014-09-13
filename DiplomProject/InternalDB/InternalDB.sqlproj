@@ -82,6 +82,8 @@
     <None Include="Scripts\Post-Deployment\Seed\Address.sql" />
     <Build Include="SubscriptionPlan.sql" />
     <Build Include="PaymentHistory.sql" />
+    <Build Include="ProductType.sql" />
+    <Build Include="Product.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Initialize\Initialize.sql" />
@@ -107,5 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Seed\PersonalDetails.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\ProductType.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\Product.sql" />
   </ItemGroup>
 </Project>

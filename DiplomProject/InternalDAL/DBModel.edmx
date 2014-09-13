@@ -121,9 +121,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RecepientId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="IssuerId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Amount" Type="smallmoney" Nullable="false" />
-          <Property Name="Currency" Type="nvarchar" MaxLength="3" Nullable="false" />
-          <Property Name="PayPalEmail" Type="nvarchar" MaxLength="1" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="PayPalEmail" Type="nvarchar(max)" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
@@ -140,6 +139,33 @@
           <Property Name="AddressId" Type="int" />
           <Property Name="ContactId" Type="int" />
           <Property Name="SubscriptionPlanId" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductTypeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Display" Type="nvarchar(max)" />
+          <Property Name="Value" Type="smallmoney" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
@@ -274,6 +300,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PaymentHystory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PaymentHystory_Recepient">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
@@ -322,6 +360,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="InternalDBModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -333,6 +383,8 @@
           <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubscriptionPlan" EntityType="Self.SubscriptionPlan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -370,6 +422,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="PaymentHistory" EntitySet="PaymentHistory" />
           </AssociationSet>
+          <AssociationSet Name="FK_PaymentHystory_Product" Association="Self.FK_PaymentHystory_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK_PaymentHystory_Recepient" Association="Self.FK_PaymentHystory_Recepient">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="PaymentHistory" EntitySet="PaymentHistory" />
@@ -385,6 +441,10 @@
           <AssociationSet Name="FK_PersonalDetails_SubscriptionPlan" Association="Self.FK_PersonalDetails_SubscriptionPlan">
             <End Role="SubscriptionPlan" EntitySet="SubscriptionPlan" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -527,15 +587,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecepientId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IssuerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PayPalEmail" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="PayPalEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_PaymentHystory_Issuer" FromRole="PaymentHistory" ToRole="AspNetUsers" />
           <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_PaymentHystory_Recepient" FromRole="PaymentHistory" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PaymentHystory_Product" FromRole="PaymentHistory" ToRole="Product" />
         </EntityType>
         <EntityType Name="PersonalDetail">
           <Key>
@@ -556,6 +616,36 @@
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_PersonalDetails" FromRole="PersonalDetails" ToRole="AspNetUsers" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_PersonalDetails_Contact" FromRole="PersonalDetails" ToRole="Contact" />
           <NavigationProperty Name="SubscriptionPlan" Relationship="Self.FK_PersonalDetails_SubscriptionPlan" FromRole="PersonalDetails" ToRole="SubscriptionPlan" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Display" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PaymentHystory_Product" FromRole="Product" ToRole="PaymentHistory" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
         </EntityType>
         <EntityType Name="SubscriptionPlan">
           <Key>
@@ -723,6 +813,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PaymentHystory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentHistory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PersonalDetails_SubscriptionPlan">
           <End Role="SubscriptionPlan" Type="Self.SubscriptionPlan" Multiplicity="0..1" />
           <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
@@ -732,6 +834,18 @@
             </Principal>
             <Dependent Role="PersonalDetails">
               <PropertyRef Name="SubscriptionPlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -746,6 +860,8 @@
           <EntitySet Name="Facilities" EntityType="Self.Facility" />
           <EntitySet Name="PaymentHistories" EntityType="Self.PaymentHistory" />
           <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
           <EntitySet Name="SubscriptionPlans" EntityType="Self.SubscriptionPlan" />
           <AssociationSet Name="FK_Facility_Address" Association="Self.FK_Facility_Address">
             <End Role="Address" EntitySet="Addresses" />
@@ -795,9 +911,17 @@
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_PaymentHystory_Product" Association="Self.FK_PaymentHystory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
           <AssociationSet Name="FK_PersonalDetails_SubscriptionPlan" Association="Self.FK_PersonalDetails_SubscriptionPlan">
             <End Role="SubscriptionPlan" EntitySet="SubscriptionPlans" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -926,8 +1050,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RecepientId" ColumnName="RecepientId" />
                 <ScalarProperty Name="IssuerId" ColumnName="IssuerId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="PayPalEmail" ColumnName="PayPalEmail" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
@@ -946,6 +1069,35 @@
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
                 <ScalarProperty Name="SubscriptionPlanId" ColumnName="SubscriptionPlanId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="InternalDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="InternalDBModel.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />

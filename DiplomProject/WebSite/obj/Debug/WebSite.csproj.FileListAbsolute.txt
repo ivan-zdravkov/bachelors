@@ -64,3 +64,6 @@ D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Microsoft.Owin.Security.Mic
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\en\Resources.resources.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.pdb
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\ECommerceHelper.Common.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\ECommerceHelper.CurrencyConverter.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Microsoft.CompilerServices.AsyncTargetingPack.Net45.dll

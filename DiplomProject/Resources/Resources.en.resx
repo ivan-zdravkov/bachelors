@@ -270,4 +270,7 @@
   <data name="UnlimitedAccess" xml:space="preserve">
     <value>UnlimitedAccess</value>
   </data>
+  <data name="Currency" xml:space="preserve">
+    <value>levs</value>
+  </data>
 </root>

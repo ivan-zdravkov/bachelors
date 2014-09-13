@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="929c97d01e3b49daa7d466f8c9eb7f16" Name="Diagram1">
+      <Diagram DiagramId="1cf15ec3058d4bd4ae3a89a9a05a298d" Name="Diagram1">
         <EntityTypeShape EntityType="InternalDBModel.Address" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetRole" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserClaim" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserLogin" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserRole" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetRole" Width="1.5" PointX="11.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserClaim" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserLogin" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserRole" Width="1.5" PointX="13.5" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="InternalDBModel.AspNetUser" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InternalDBModel.Contact" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="InternalDBModel.Facility" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.PaymentHistory" Width="1.5" PointX="10.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.PaymentHistory" Width="1.5" PointX="13.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InternalDBModel.PersonalDetail" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.Product" Width="1.5" PointX="11.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.ProductType" Width="1.5" PointX="9" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InternalDBModel.SubscriptionPlan" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
         <AssociationConnector Association="InternalDBModel.FK_Facility_Address" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_Address" ManuallyRouted="false" />
@@ -28,7 +30,9 @@
         <AssociationConnector Association="InternalDBModel.FK_PaymentHystory_Recepient" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_Facility_Contact" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalDBModel.FK_PaymentHystory_Product" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_SubscriptionPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalDBModel.FK_Product_ProductType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -35,6 +35,8 @@ namespace InternalDAL
         public virtual DbSet<Facility> Facilities { get; set; }
         public virtual DbSet<PaymentHistory> PaymentHistories { get; set; }
         public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
     }
 }

@@ -17,8 +17,7 @@ namespace InternalDAL
         public int Id { get; set; }
         public string RecepientId { get; set; }
         public string IssuerId { get; set; }
-        public decimal Amount { get; set; }
-        public string Currency { get; set; }
+        public int ProductId { get; set; }
         public string PayPalEmail { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
@@ -27,5 +26,6 @@ namespace InternalDAL
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
