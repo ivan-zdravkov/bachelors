@@ -273,4 +273,7 @@
   <data name="Currency" xml:space="preserve">
     <value>лева</value>
   </data>
+  <data name="Month" xml:space="preserve">
+    <value>Месец</value>
+  </data>
 </root>

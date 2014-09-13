@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @using WebSite.Controllers
 
-@model WebSite.Models.Subscription.SubscriptionCreditsModel
+@model WebSite.Models.Subscription.SubscriptionsCreditsViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,92 +10,70 @@
 <h2>@Resources.Subscription</h2>
 
 <div class="row">
-    @if (!Model.UnlimitedAccess)
+    @if (!Model.SubscriptionCreditsModel.UnlimitedAccess)
     {
         string callback = "http://" + HttpContext.Current.Request.Url.Host + ((HttpContext.Current.Request.Url.Host == "localhost") ? (":" + HttpContext.Current.Request.Url.Port) : "/TUFitness") + "/payment/PayPalPaymentNotification";
         PaymentController paymentController = new PaymentController();
         
         <div class="col-md-6">
-            @Html.DisplayNameFor(model => model.ActiveUntil)
-            @(Model.ActiveUntil.HasValue ? Model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----")
-        </div>
+            <h3 class="underline">
+                @Html.DisplayNameFor(model => model.SubscriptionCreditsModel.Credits)
+                @Html.DisplayFor(model => model.SubscriptionCreditsModel.Credits)
+            </h3>
 
+            @foreach (var product in Model.Products.Where(product => product.ProductTypeId == 1).ToList())
+            {
+                <div class="row very-small-margin">
+                    <h4 class="pull-left">@product.Display @Resources.Credits </h4>
+                    <span class="pull-right">
+                        @product.Value.ToString("F") @Resources.Currency
+                        <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
+                                data-button="buynow"
+                                data-name="@product.Name"
+                                data-quantity="1"
+                                data-amount=@paymentController.ConvertBGNToGBP(product.Value.ToString().Replace(",","."))
+                                data-currency="GBP"
+                                data-callback=@callback
+                                data-custom=@HttpContext.Current.User.Identity.GetUserId()
+                                data-env="sandbox">
+                        </script>
+                    </span>
+                </div>
+            }
+        </div> 
+        
         <div class="col-md-6">
-            @Html.DisplayNameFor(model => model.Credits)
-            @Html.DisplayFor(model => model.Credits)
+            <h3 class="underline">
+                @Html.DisplayNameFor(model => model.SubscriptionCreditsModel.ActiveUntil)
+                @(Model.SubscriptionCreditsModel.ActiveUntil.HasValue ? Model.SubscriptionCreditsModel.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----")
+            </h3>
 
-            <div class="row">
-                <div class="col-md-8">
-                    <span class="pull-left">50 @Resources.Credits </span><span class="pull-right"> 9.99 @Resources.Currency</span>
+            @foreach (var product in Model.Products.Where(product => product.ProductTypeId == 2).ToList())
+            {
+                <div class="row very-small-margin">
+                    <h4 class="pull-left">@product.Display @Resources.Month</h4>
+                    <span class="pull-right">
+                        @product.Value.ToString("F") @Resources.Currency
+                        <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
+                                data-button="buynow"
+                                data-name="@product.Name"
+                                data-quantity="1"
+                                data-amount=@paymentController.ConvertBGNToGBP(product.Value.ToString().Replace(",","."))
+                                data-currency="GBP"
+                                data-callback=@callback
+                                data-custom=@HttpContext.Current.User.Identity.GetUserId()
+                                data-env="sandbox">
+                        </script>
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
-                            data-button="buynow"
-                            data-name="credits50"
-                            data-quantity="1"
-                            data-amount=@paymentController.ConvertBGNToGBP("9.99")
-                            data-currency="GBP"
-                            data-callback=@callback
-                            data-custom=@HttpContext.Current.User.Identity.GetUserId()
-                            data-env="sandbox">
-                    </script>
-                </div>
-
-                <div class="col-md-8">
-                    <span class="pull-left">100 @Resources.Credits </span><span class="pull-right"> 18.99 @Resources.Currency</span>
-                </div>
-                <div class="col-md-4">
-                    <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
-                            data-button="buynow"
-                            data-name="credits100"
-                            data-quantity="1"
-                            data-amount=@paymentController.ConvertBGNToGBP("18.99")
-                            data-currency="GBP"
-                            data-callback=@callback
-                            data-custom=@HttpContext.Current.User.Identity.GetUserId()
-                            data-env="sandbox">
-                    </script>
-                </div>
-
-                <div class="col-md-8">
-                    <span class="pull-left">200 @Resources.Credits </span><span class="pull-right"> 35.99 @Resources.Currency</span>
-                </div>
-                <div class="col-md-4">
-                    <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
-                            data-button="buynow"
-                            data-name="credits200"
-                            data-quantity="1"
-                            data-amount=@paymentController.ConvertBGNToGBP("35.99")
-                            data-currency="GBP"
-                            data-callback=@callback
-                            data-custom=@HttpContext.Current.User.Identity.GetUserId()
-                            data-env="sandbox">
-                    </script>
-                </div>
-
-                <div class="col-md-8">
-                    <span class="pull-left">500 @Resources.Credits </span><span class="pull-right"> 74.99 @Resources.Currency</span>
-                </div>
-                <div class="col-md-4">
-                    <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=admin@tu.com"
-                            data-button="buynow"
-                            data-name="credits500"
-                            data-quantity="1"
-                            data-amount=@paymentController.ConvertBGNToGBP("74.99")
-                            data-currency="GBP"
-                            data-callback=@callback
-                            data-custom=@HttpContext.Current.User.Identity.GetUserId()
-                            data-env="sandbox">
-                    </script>
-                </div>
-            </div>
-        </div>
+            }
+        </div> 
     }
     else
     { 
         <div class="col-md-12">
-            @Html.DisplayNameFor(model => model.UnlimitedAccess)
-            @Html.DisplayFor(model => model.UnlimitedAccess)
+            @Html.DisplayNameFor(model => model.SubscriptionCreditsModel.UnlimitedAccess)
+            @Html.DisplayFor(model => model.SubscriptionCreditsModel.UnlimitedAccess)
         </div>
     }
 

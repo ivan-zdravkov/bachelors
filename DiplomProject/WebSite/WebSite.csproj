@@ -201,7 +201,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Payment\PayPalCheckoutInfo.cs" />
     <Compile Include="Models\Payment\PayPalListenerModel.cs" />
+    <Compile Include="Models\Subscription\ProductModel.cs" />
     <Compile Include="Models\Subscription\SubscriptionCreditsModel.cs" />
+    <Compile Include="Models\Subscription\SubscriptionsCreditsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="WebApi\AccessControlController.cs" />

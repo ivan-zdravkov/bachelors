@@ -273,4 +273,7 @@
   <data name="Currency" xml:space="preserve">
     <value>levs</value>
   </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
 </root>

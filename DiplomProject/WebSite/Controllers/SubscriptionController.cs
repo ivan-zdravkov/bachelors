@@ -22,11 +22,26 @@ namespace WebSite.Controllers
             AspNetUser user = DB.AspNetUsers.Find(userId);
 
             PersonalDetail personalDetail = user.PersonalDetail;
-            SubscriptionCreditsModel model = new SubscriptionCreditsModel
+            SubscriptionCreditsModel subscriptionCreditsModel = new SubscriptionCreditsModel
             {
                 ActiveUntil = personalDetail.SubscriptionPlan.ActiveUntil,
                 Credits = personalDetail.SubscriptionPlan.Credits,
                 UnlimitedAccess = personalDetail.SubscriptionPlan.UnlimitedAccess
+            };
+
+            List<ProductModel> products = DB.Products.Where(product => (product.IsActive && (product.ProductTypeId == 1 || product.ProductTypeId == 2))).Select(product => new ProductModel
+                {
+                    ProductTypeId = product.ProductTypeId,
+                    Name = product.Name,
+                    Display = product.Display,
+                    Value = product.Value,
+                    Currency = product.Currency
+                }).ToList();
+
+            SubscriptionsCreditsViewModel model = new SubscriptionsCreditsViewModel
+            {
+                SubscriptionCreditsModel = subscriptionCreditsModel,
+                Products = products
             };
 
             return View(model);          

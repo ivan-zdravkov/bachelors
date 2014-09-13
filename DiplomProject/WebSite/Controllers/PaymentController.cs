@@ -28,14 +28,19 @@ namespace WebSite.Controllers
             }
 
             string userId = payPalCheckoutInfo.custom;
-            DB.PaymentHistories.Add(new PaymentHistory
+
+            Product product = DB.Products.Where(p => p.Name == payPalCheckoutInfo.item_name1).SingleOrDefault();
+            if (product != null)
+            {
+                DB.PaymentHistories.Add(new PaymentHistory
                 {
-                    Amount = decimal.Parse(payPalCheckoutInfo.mc_gross, CultureInfo.InvariantCulture),
+                    Product = product,
                     RecepientId = userId,
                     IssuerId = userId,
-                    Currency = "GBP",
                     PayPalEmail = payPalCheckoutInfo.payer_email
                 });
+            }
+
 
             AspNetUser user = DB.AspNetUsers.Find(userId);
             if (user != null)
@@ -44,19 +49,19 @@ namespace WebSite.Controllers
 
                 switch (payPalCheckoutInfo.item_name1)
                 {
-                    case "credits50":
+                    case "50 Credits":
                         plan.Credits += 50;
                         break;
-                    case "credits100":
+                    case "100 Credits":
                         plan.Credits += 100;
                         break;
-                    case "credits200":
+                    case "200 Credits":
                         plan.Credits += 200;
                         break;
-                    case "credits500":
+                    case "500 Credits":
                         plan.Credits += 500;
                         break;
-                    case "subscription1month":
+                    case "1 Month Subscription":
                         if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
                         {
                             plan.ActiveUntil.Value.AddMonths(1);
@@ -66,7 +71,7 @@ namespace WebSite.Controllers
                             plan.ActiveUntil = DateTime.Today.AddMonths(1);
                         }
                         break;
-                    case "subscription3month":
+                    case "3 Month Subscription":
                         if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
                         {
                             plan.ActiveUntil.Value.AddMonths(3);
@@ -76,7 +81,7 @@ namespace WebSite.Controllers
                             plan.ActiveUntil = DateTime.Today.AddMonths(3);
                         }
                         break;
-                    case "subscription6month":
+                    case "6 Month Subscription":
                         if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
                         {
                             plan.ActiveUntil.Value.AddMonths(6);
@@ -86,7 +91,7 @@ namespace WebSite.Controllers
                             plan.ActiveUntil = DateTime.Today.AddMonths(6);
                         }
                         break;
-                    case "subscription12month":
+                    case "12 Month Subscription":
                         if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
                         {
                             plan.ActiveUntil.Value.AddMonths(12);
@@ -116,7 +121,7 @@ namespace WebSite.Controllers
             string response = web.DownloadString(uri);
 
             decimal rate = Convert.ToDecimal(response.Replace("/r/n", ""), CultureInfo.InvariantCulture);
-            return (amount * rate).ToString().Substring(0, 4).Replace(",", ".");
+            return (amount * rate).ToString("F").Replace(",", ".");
         }
         public ActionResult Index()
         {
