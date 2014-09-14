@@ -12,7 +12,8 @@
 <div class="row">
     @if (!Model.SubscriptionCreditsModel.UnlimitedAccess)
     {
-        string callback = "http://" + HttpContext.Current.Request.Url.Host + ((HttpContext.Current.Request.Url.Host == "localhost") ? (":" + HttpContext.Current.Request.Url.Port) : "/TUFitness") + "/payment/PayPalPaymentNotification";
+        //string callback = "http://" + HttpContext.Current.Request.Url.Host + ((HttpContext.Current.Request.Url.Host == "localhost") ? (":" + HttpContext.Current.Request.Url.Port) : "/TUFitness") + "/payment/PayPalPaymentNotification";
+        string callback = "http://464fb34f.ngrok.com/payment/PayPalPaymentNotification";
         PaymentController paymentController = new PaymentController();
         
         <div class="col-md-6">
@@ -34,7 +35,7 @@
                                 data-amount=@paymentController.ConvertBGNToGBP(product.Value.ToString().Replace(",","."))
                                 data-currency="GBP"
                                 data-callback=@callback
-                                data-custom=@HttpContext.Current.User.Identity.GetUserId()
+                                data-custom=@(product.Id + "_" + HttpContext.Current.User.Identity.GetUserId())
                                 data-env="sandbox">
                         </script>
                     </span>
@@ -61,7 +62,7 @@
                                 data-amount=@paymentController.ConvertBGNToGBP(product.Value.ToString().Replace(",","."))
                                 data-currency="GBP"
                                 data-callback=@callback
-                                data-custom=@HttpContext.Current.User.Identity.GetUserId()
+                                data-custom=@(product.Id + "_" + HttpContext.Current.User.Identity.GetUserId())
                                 data-env="sandbox">
                         </script>
                     </span>

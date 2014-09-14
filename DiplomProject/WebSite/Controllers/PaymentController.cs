@@ -28,9 +28,10 @@ namespace WebSite.Controllers
                 model.GetStatus(parameters);
             }
 
-            string userId = payPalCheckoutInfo.custom;
+            int productId = int.Parse(payPalCheckoutInfo.custom.Split('_')[0]);
+            string userId = payPalCheckoutInfo.custom.Split('_')[1];
 
-            Product product = DB.Products.Where(p => p.Name == payPalCheckoutInfo.item_name1).SingleOrDefault();
+            Product product = DB.Products.Where(p => p.Id == productId).SingleOrDefault();
             if (product != null)
             {
                 DB.PaymentHistories.Add(new PaymentHistory
@@ -40,73 +41,32 @@ namespace WebSite.Controllers
                     IssuerId = userId,
                     PayPalEmail = payPalCheckoutInfo.payer_email
                 });
-            }
 
-
-            AspNetUser user = DB.AspNetUsers.Find(userId);
-            if (user != null)
-            {
-                SubscriptionPlan plan = user.PersonalDetail.SubscriptionPlan;
-
-                switch (payPalCheckoutInfo.item_name1)
+                AspNetUser user = DB.AspNetUsers.Find(userId);
+                if (user != null)
                 {
-                    case "50 Credits":
-                        plan.Credits += 50;
-                        break;
-                    case "100 Credits":
-                        plan.Credits += 100;
-                        break;
-                    case "200 Credits":
-                        plan.Credits += 200;
-                        break;
-                    case "500 Credits":
-                        plan.Credits += 500;
-                        break;
-                    case "1 Month Subscription":
+                    SubscriptionPlan plan = user.PersonalDetail.SubscriptionPlan;
+
+                    if (product.ProductTypeId == 1) // Credits
+                    {
+                        plan.Credits += int.Parse(product.Display);
+                    }
+                    else if (product.ProductTypeId == 2) // Subscription
+                    {
                         if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
                         {
-                            plan.ActiveUntil.Value.AddMonths(1);
+                            plan.ActiveUntil = plan.ActiveUntil.Value.AddMonths(int.Parse(product.Display));
                         }
                         else
                         {
-                            plan.ActiveUntil = DateTime.Today.AddMonths(1);
+                            plan.ActiveUntil = DateTime.Today.AddMonths(int.Parse(product.Display));
                         }
-                        break;
-                    case "3 Month Subscription":
-                        if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
-                        {
-                            plan.ActiveUntil.Value.AddMonths(3);
-                        }
-                        else
-                        {
-                            plan.ActiveUntil = DateTime.Today.AddMonths(3);
-                        }
-                        break;
-                    case "6 Month Subscription":
-                        if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
-                        {
-                            plan.ActiveUntil.Value.AddMonths(6);
-                        }
-                        else
-                        {
-                            plan.ActiveUntil = DateTime.Today.AddMonths(6);
-                        }
-                        break;
-                    case "12 Month Subscription":
-                        if (plan.ActiveUntil.HasValue && plan.ActiveUntil.Value > DateTime.Today)
-                        {
-                            plan.ActiveUntil.Value.AddMonths(12);
-                        }
-                        else
-                        {
-                            plan.ActiveUntil = DateTime.Today.AddMonths(12);
-                        }
-                        break;
+                    }
                 }
+
+                DB.SaveChanges();
             }
 
-            DB.SaveChanges();
-    
             return new EmptyResult();
         } 
 

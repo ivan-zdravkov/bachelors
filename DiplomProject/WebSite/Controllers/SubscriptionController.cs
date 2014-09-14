@@ -31,6 +31,7 @@ namespace WebSite.Controllers
 
             List<ProductModel> products = DB.Products.Where(product => (product.IsActive && (product.ProductTypeId == 1 || product.ProductTypeId == 2))).Select(product => new ProductModel
                 {
+                    Id = product.Id,
                     ProductTypeId = product.ProductTypeId,
                     Name = product.Name,
                     Display = product.Display,
