@@ -16,6 +16,7 @@ namespace WebSite.Controllers
     [AllowAnonymous]
     public class PaymentController : BaseController
     {
+        //[EnableCors("*", "*", "*")]
         public EmptyResult PayPalPaymentNotification(PayPalCheckoutInfo payPalCheckoutInfo)
         {
             PayPalListenerModel model = new PayPalListenerModel();
@@ -122,10 +123,6 @@ namespace WebSite.Controllers
 
             decimal rate = Convert.ToDecimal(response.Replace("/r/n", ""), CultureInfo.InvariantCulture);
             return (amount * rate).ToString("F").Replace(",", ".");
-        }
-        public ActionResult Index()
-        {
-            return View();
         }
 	}
 }

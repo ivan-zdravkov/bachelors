@@ -67,3 +67,11 @@ D:\Documents\DiplomProject\DiplomProject\WebSite\obj\Debug\WebSite.pdb
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\ECommerceHelper.Common.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\ECommerceHelper.CurrencyConverter.dll
 D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Microsoft.CompilerServices.AsyncTargetingPack.Net45.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Cors.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.Cors.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.Web.Http.Cors.xml
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Thinktecture.IdentityModel.dll
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Thinktecture.IdentityModel.pdb
+D:\Documents\DiplomProject\DiplomProject\WebSite\bin\Thinktecture.IdentityModel.xml

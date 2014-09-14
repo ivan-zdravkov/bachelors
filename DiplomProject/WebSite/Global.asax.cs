@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Thinktecture.IdentityModel.Http.Cors.Mvc;
 using WebSite.App_Start;
 
 namespace WebSite
@@ -19,6 +20,15 @@ namespace WebSite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterCors(MvcCorsConfiguration.Configuration);
+        }
+
+        private void RegisterCors(MvcCorsConfiguration corsConfig)
+        {
+            corsConfig
+               .ForResources("Payment")
+               .ForOrigins("*")
+               .AllowAll();
         }
     }
 }
