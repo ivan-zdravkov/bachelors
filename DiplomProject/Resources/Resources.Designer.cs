@@ -430,6 +430,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Плащания.
+        /// </summary>
+        public static string PaymentsLog {
+            get {
+                return ResourceManager.GetString("PaymentsLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрация.
         /// </summary>
         public static string Register {
@@ -484,6 +493,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сайт на технически университет.
+        /// </summary>
+        public static string TUSite {
+            get {
+                return ResourceManager.GetString("TUSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неограничен достъп.
         /// </summary>
         public static string UnlimitedAccess {
@@ -525,6 +543,24 @@ namespace Resources {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Посещения.
+        /// </summary>
+        public static string VisitsLog {
+            get {
+                return ResourceManager.GetString("VisitsLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добре дошли на страницата на ТУ Фитнес. Това е интегрирана система за плащания и контрол на достъпа до мрежата на фитнеси към Технически Университет София..
+        /// </summary>
+        public static string WelcomeMemo {
+            get {
+                return ResourceManager.GetString("WelcomeMemo", resourceCulture);
             }
         }
         

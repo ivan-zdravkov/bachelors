@@ -276,4 +276,16 @@
   <data name="Month" xml:space="preserve">
     <value>Месец</value>
   </data>
+  <data name="PaymentsLog" xml:space="preserve">
+    <value>Плащания</value>
+  </data>
+  <data name="VisitsLog" xml:space="preserve">
+    <value>Посещения</value>
+  </data>
+  <data name="WelcomeMemo" xml:space="preserve">
+    <value>Добре дошли на страницата на ТУ Фитнес. Това е интегрирана система за плащания и контрол на достъпа до мрежата на фитнеси към Технически Университет София.</value>
+  </data>
+  <data name="TUSite" xml:space="preserve">
+    <value>Сайт на технически университет</value>
+  </data>
 </root>

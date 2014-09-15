@@ -276,4 +276,16 @@
   <data name="Month" xml:space="preserve">
     <value>Month</value>
   </data>
+  <data name="PaymentsLog" xml:space="preserve">
+    <value>Payments Log</value>
+  </data>
+  <data name="VisitsLog" xml:space="preserve">
+    <value>Visits Log</value>
+  </data>
+  <data name="WelcomeMemo" xml:space="preserve">
+    <value>Welcome on the pages of TU Fitness. This is an integrated system for online payments and access control for the network of Technical University of Sofia's sporting facilities.</value>
+  </data>
+  <data name="TUSite" xml:space="preserve">
+    <value>Techical University Site</value>
+  </data>
 </root>
