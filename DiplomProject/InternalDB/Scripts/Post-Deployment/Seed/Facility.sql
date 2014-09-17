@@ -2,8 +2,8 @@
 
 SET IDENTITY_INSERT [dbo].[Facility] ON
 
-INSERT [dbo].[Facility] ([Id], [Name], [ManagerId], [AddressId], [ContactId], [CreatedBy], [CreatedAt]) 
-	VALUES (1, N'ТУ Фитнес - Пловдив', N'001e2bfd-cac1-4584-8a49-93e9102fa019', 1, 1, N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
+INSERT [dbo].[Facility] ([Id], [Name], [DeviceId], [ManagerId], [AddressId], [ContactId], [CreatedBy], [CreatedAt]) 
+	VALUES (1, N'ТУ Фитнес - Пловдив', 1112, N'001e2bfd-cac1-4584-8a49-93e9102fa019', 1, 1, N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
 INSERT [dbo].[Facility] ([Id], [Name], [ManagerId], [AddressId], [ContactId], [CreatedBy], [CreatedAt]) 
 	VALUES (2, N'ТУ Фитнес - София', N'6e46e6c5-ea32-49d7-a016-7db46650b102', 2, 2, N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
 INSERT [dbo].[Facility] ([Id], [Name], [ManagerId], [AddressId], [ContactId], [CreatedBy], [CreatedAt]) 

@@ -66,6 +66,9 @@
     <Compile Include="AspNetUserRole.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Card.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contact.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -83,6 +86,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntranceHistory.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Facility.cs">
       <DependentUpon>DBModel.tt</DependentUpon>

@@ -19,6 +19,7 @@ namespace InternalDAL
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetUserRoles = new HashSet<AspNetUserRole>();
+            this.Cards = new HashSet<Card>();
             this.Facilities = new HashSet<Facility>();
             this.PaymentHistories = new HashSet<PaymentHistory>();
             this.PaymentHistories1 = new HashSet<PaymentHistory>();
@@ -40,6 +41,7 @@ namespace InternalDAL
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual PersonalDetail PersonalDetail { get; set; }
+        public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<Facility> Facilities { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
         public virtual ICollection<PaymentHistory> PaymentHistories1 { get; set; }

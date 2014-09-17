@@ -16,6 +16,7 @@ namespace InternalDAL
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<int> DeviceId { get; set; }
         public string ManagerId { get; set; }
         public int AddressId { get; set; }
         public int ContactId { get; set; }

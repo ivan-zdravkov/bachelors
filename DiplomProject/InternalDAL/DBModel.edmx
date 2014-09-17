@@ -85,6 +85,19 @@
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserProfileId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Id" />
@@ -100,12 +113,25 @@
           <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="LastModifiedAt" Type="datetime" />
         </EntityType>
+        <EntityType Name="EntranceHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="EntryStatus" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastModifiedAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="Facility">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeviceId" Type="int" />
           <Property Name="ManagerId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AddressId" Type="int" Nullable="false" />
           <Property Name="ContactId" Type="int" Nullable="false" />
@@ -252,6 +278,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Card_UserProfile">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntranceHistory_Card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1" />
+          <End Role="EntranceHistory" Type="Self.EntranceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntranceHistory">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facility_Address">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
@@ -379,7 +429,9 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntranceHistory" EntityType="Self.EntranceHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentHistory" EntityType="Self.PaymentHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetails" Schema="dbo" store:Type="Tables" />
@@ -405,6 +457,14 @@
           <AssociationSet Name="FK_AspNetUsers_PersonalDetails" Association="Self.FK_AspNetUsers_PersonalDetails">
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Card_UserProfile" Association="Self.FK_Card_UserProfile">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Card" EntitySet="Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntranceHistory_Card" Association="Self.FK_EntranceHistory_Card">
+            <End Role="Card" EntitySet="Card" />
+            <End Role="EntranceHistory" EntitySet="EntranceHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_Facility_Address" Association="Self.FK_Facility_Address">
             <End Role="Address" EntitySet="Address" />
@@ -542,9 +602,25 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_AspNetUserRoles_AspNetUser" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
           <NavigationProperty Name="PersonalDetail" Relationship="Self.FK_AspNetUsers_PersonalDetails" FromRole="AspNetUsers" ToRole="PersonalDetails" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Card_UserProfile" FromRole="AspNetUsers" ToRole="Card" />
           <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_AspNetUsers" FromRole="AspNetUsers" ToRole="Facility" />
           <NavigationProperty Name="PaymentHistories" Relationship="Self.FK_PaymentHystory_Issuer" FromRole="AspNetUsers" ToRole="PaymentHistory" />
           <NavigationProperty Name="PaymentHistories1" Relationship="Self.FK_PaymentHystory_Recepient" FromRole="AspNetUsers" ToRole="PaymentHistory" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserProfileId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Card_UserProfile" FromRole="Card" ToRole="AspNetUsers" />
+          <NavigationProperty Name="EntranceHistories" Relationship="Self.FK_EntranceHistory_Card" FromRole="Card" ToRole="EntranceHistory" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -563,12 +639,26 @@
           <NavigationProperty Name="Facilities" Relationship="Self.FK_Facility_Contact" FromRole="Contact" ToRole="Facility" />
           <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_Contact" FromRole="Contact" ToRole="PersonalDetails" />
         </EntityType>
+        <EntityType Name="EntranceHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardId" Type="Int32" Nullable="false" />
+          <Property Name="EntryStatus" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Card" Relationship="Self.FK_EntranceHistory_Card" FromRole="EntranceHistory" ToRole="Card" />
+        </EntityType>
         <EntityType Name="Facility">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" />
           <Property Name="ManagerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressId" Type="Int32" Nullable="false" />
           <Property Name="ContactId" Type="Int32" Nullable="false" />
@@ -753,6 +843,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Card_UserProfile">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Card" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Card">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Facility_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Facility" Type="Self.Facility" Multiplicity="*" />
@@ -786,6 +888,18 @@
             </Principal>
             <Dependent Role="PaymentHistory">
               <PropertyRef Name="RecepientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntranceHistory_Card">
+          <End Role="Card" Type="Self.Card" Multiplicity="1" />
+          <End Role="EntranceHistory" Type="Self.EntranceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Card">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntranceHistory">
+              <PropertyRef Name="CardId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -856,7 +970,9 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="EntranceHistories" EntityType="Self.EntranceHistory" />
           <EntitySet Name="Facilities" EntityType="Self.Facility" />
           <EntitySet Name="PaymentHistories" EntityType="Self.PaymentHistory" />
           <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
@@ -891,6 +1007,10 @@
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Card_UserProfile" Association="Self.FK_Card_UserProfile">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Card" EntitySet="Cards" />
+          </AssociationSet>
           <AssociationSet Name="FK_Facility_AspNetUsers" Association="Self.FK_Facility_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Facility" EntitySet="Facilities" />
@@ -902,6 +1022,10 @@
           <AssociationSet Name="FK_PaymentHystory_Recepient" Association="Self.FK_PaymentHystory_Recepient">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="PaymentHistory" EntitySet="PaymentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntranceHistory_Card" Association="Self.FK_EntranceHistory_Card">
+            <End Role="Card" EntitySet="Cards" />
+            <End Role="EntranceHistory" EntitySet="EntranceHistories" />
           </AssociationSet>
           <AssociationSet Name="FK_Facility_Contact" Association="Self.FK_Facility_Contact">
             <End Role="Contact" EntitySet="Contacts" />
@@ -1013,6 +1137,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="InternalDBModel.Card">
+              <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="InternalDBModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
@@ -1029,11 +1167,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EntranceHistories">
+            <EntityTypeMapping TypeName="InternalDBModel.EntranceHistory">
+              <MappingFragment StoreEntitySet="EntranceHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="EntryStatus" ColumnName="EntryStatus" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedAt" ColumnName="LastModifiedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Facilities">
             <EntityTypeMapping TypeName="InternalDBModel.Facility">
               <MappingFragment StoreEntitySet="Facility">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
                 <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />

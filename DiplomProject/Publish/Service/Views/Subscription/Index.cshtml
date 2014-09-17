@@ -12,8 +12,8 @@
 <div class="row">
     @if (!Model.SubscriptionCreditsModel.UnlimitedAccess)
     {
-        string callback = "http://" + HttpContext.Current.Request.Url.Host + ((HttpContext.Current.Request.Url.Host == "localhost") ? (":" + HttpContext.Current.Request.Url.Port) : "/TUFitness") + "/payment/PayPalPaymentNotification";
-        //string callback = "http://464fb34f.ngrok.com/payment/PayPalPaymentNotification";
+        //string callback = "http://" + HttpContext.Current.Request.Url.Host + ((HttpContext.Current.Request.Url.Host == "localhost") ? (":" + HttpContext.Current.Request.Url.Port) : "/TUFitness") + "/payment/PayPalPaymentNotification";
+        string callback = "http://464fb34f.ngrok.com/payment/PayPalPaymentNotification";
         PaymentController paymentController = new PaymentController();
         
         <div class="col-md-6">

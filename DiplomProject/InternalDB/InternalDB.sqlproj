@@ -84,6 +84,8 @@
     <Build Include="PaymentHistory.sql" />
     <Build Include="ProductType.sql" />
     <Build Include="Product.sql" />
+    <Build Include="Card.sql" />
+    <Build Include="EntranceHistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Initialize\Initialize.sql" />

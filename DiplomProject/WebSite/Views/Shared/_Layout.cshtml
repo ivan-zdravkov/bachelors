@@ -4,95 +4,95 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - @Resources.ApplicationName</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - @Resources.ApplicationName</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top shadow">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink(Resources.ApplicationName, "Index", "Home", null, new { @class = "navbar-brand" })
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top shadow">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink(Resources.ApplicationName, "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
+                        <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink(Resources.VisitsLog, "Visits", "Log")</li>
+                            <li>@Html.ActionLink(Resources.PaymentsLog, "Payments", "Log")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
-                    <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
+        </div>
+        <div class="container body-content shadow">
+            @RenderBody()
+
+            <div class="footer-wrapper">
+                <hr />
+                <footer class="centercontents">
+                    <p class="pull-left">&copy; @DateTime.Now.Year - @Resources.ApplicationName</p>
+
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink(Resources.VisitsLog, "Visits", "Log")</li>
-                        <li>@Html.ActionLink(Resources.PaymentsLog, "Payments", "Log")</li>
+                        SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
+
+                        if (model != null && this.ViewContext.RouteData.GetRequiredString("controller") != "Subscription")
+                        {
+                            <span class="span5 center">
+                                @if (!model.UnlimitedAccess)
+                                {
+                                    if (model.ActiveUntil.HasValue && model.ActiveUntil.Value > DateTime.Today)
+                                    {
+                                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription")
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription", new { }, new { style = "color: red;" })
+                                    }
+                                    <span>|</span>
+                                    if (model.Credits > 0)
+                                    {
+                                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription")
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription", new { }, new { style = "color: red;" })
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.ActionLink(Resources.UnlimitedAccess, "Index", "Subscription")
+                                }
+                            </span>
+                        }
                     }
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+
+
+                    <span class="language-control pull-right">
+                        @Html.ActionLink(Resources.Bulgarian, "SetCulture", "Home", new { culture = "bg" }, new { @class = "btn btn-default" })
+                        @Html.ActionLink(Resources.English, "SetCulture", "Home", new { culture = "en" }, new { @class = "btn btn-default" })
+                    </span>
+                </footer>
             </div>
         </div>
-    </div>
-    <div class="container body-content shadow">
-        @RenderBody()
 
-        <div class="footer-wrapper">
-            <hr />
-            <footer class="centercontents">
-                <p class="pull-left">&copy; @DateTime.Now.Year - @Resources.ApplicationName</p>
-
-                @if (Request.IsAuthenticated)
-                {
-                    SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
-
-                    if (model != null && this.ViewContext.RouteData.GetRequiredString("controller") != "Subscription")
-                    {
-                        <span class="span5 center">
-                            @if (!model.UnlimitedAccess)
-                            {
-                                if (model.ActiveUntil.HasValue && model.ActiveUntil.Value > DateTime.Today)
-                                {
-                                    @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription")
-                                }
-                                else
-                                {
-                                    @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription", new { }, new { style = "color: red;" })
-                                }
-                                <span>|</span>
-                                if (model.Credits > 0)
-                                {
-                                    @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription")
-                                }
-                                else
-                                {
-                                    @Html.ActionLink(Resources.Credits + " " + model.Credits, "Index", "Subscription", new { }, new { style = "color: red;" })
-                                }
-                            }
-                            else
-                            {
-                                @Html.ActionLink(Resources.UnlimitedAccess, "Index", "Subscription")
-                            }
-                        </span>
-                    }
-                }
-
-
-
-                <span class="language-control pull-right">
-                    @Html.ActionLink(Resources.Bulgarian, "SetCulture", "Home", new { culture = "bg" }, new { @class = "btn btn-default" })
-                    @Html.ActionLink(Resources.English, "SetCulture", "Home", new { culture = "en" }, new { @class = "btn btn-default" })
-                </span>
-            </footer>
-        </div>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 
 </html>

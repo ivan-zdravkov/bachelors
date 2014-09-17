@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Facility](
 	[Id]					int						IDENTITY (1, 1) NOT NULL,
 	[Name]					nvarchar(50)			NOT NULL,
+	[DeviceId]				int						NULL,
 	[ManagerId]				nvarchar(128)			NOT NULL,
 	[AddressId]				int						NOT NULL,
 	[ContactId]				int						NOT NULL,
