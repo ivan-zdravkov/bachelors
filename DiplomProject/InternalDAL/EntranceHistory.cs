@@ -16,6 +16,7 @@ namespace InternalDAL
     {
         public int Id { get; set; }
         public int CardId { get; set; }
+        public int FacilityId { get; set; }
         public bool EntryStatus { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
@@ -23,5 +24,6 @@ namespace InternalDAL
         public Nullable<System.DateTime> LastModifiedAt { get; set; }
     
         public virtual Card Card { get; set; }
+        public virtual Facility Facility { get; set; }
     }
 }

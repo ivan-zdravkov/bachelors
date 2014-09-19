@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[PersonalDetails](
 	[Id]					int						IDENTITY (1, 1) NOT NULL,
-	[FirstName]				nvarchar(50)			NOT NULL,
+	[FirstName]				nvarchar(50)			NULL,
 	[MiddleName]			nvarchar(50)			NULL,
-	[LastName]				nvarchar(50)			NOT NULL,
+	[LastName]				nvarchar(50)			NULL,
 	[AddressId]				int						NULL,
 	[ContactId]				int						NULL,
 	[SubscriptionPlanId]	int						NULL,

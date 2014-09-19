@@ -119,6 +119,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="FacilityId" Type="int" Nullable="false" />
           <Property Name="EntryStatus" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="CreatedAt" Type="datetime" />
@@ -159,9 +160,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="AddressId" Type="int" />
           <Property Name="ContactId" Type="int" />
           <Property Name="SubscriptionPlanId" Type="int" />
@@ -299,6 +300,18 @@
             </Principal>
             <Dependent Role="EntranceHistory">
               <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntranceHistory_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="1" />
+          <End Role="EntranceHistory" Type="Self.EntranceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntranceHistory">
+              <PropertyRef Name="FacilityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -464,6 +477,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_EntranceHistory_Card" Association="Self.FK_EntranceHistory_Card">
             <End Role="Card" EntitySet="Card" />
+            <End Role="EntranceHistory" EntitySet="EntranceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntranceHistory_Facility" Association="Self.FK_EntranceHistory_Facility">
+            <End Role="Facility" EntitySet="Facility" />
             <End Role="EntranceHistory" EntitySet="EntranceHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_Facility_Address" Association="Self.FK_Facility_Address">
@@ -645,12 +662,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CardId" Type="Int32" Nullable="false" />
+          <Property Name="FacilityId" Type="Int32" Nullable="false" />
           <Property Name="EntryStatus" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LastModifiedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Card" Relationship="Self.FK_EntranceHistory_Card" FromRole="EntranceHistory" ToRole="Card" />
+          <NavigationProperty Name="Facility" Relationship="Self.FK_EntranceHistory_Facility" FromRole="EntranceHistory" ToRole="Facility" />
         </EntityType>
         <EntityType Name="Facility">
           <Key>
@@ -669,6 +688,7 @@
           <NavigationProperty Name="Address" Relationship="Self.FK_Facility_Address" FromRole="Facility" ToRole="Address" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Facility_AspNetUsers" FromRole="Facility" ToRole="AspNetUsers" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_Facility_Contact" FromRole="Facility" ToRole="Contact" />
+          <NavigationProperty Name="EntranceHistories" Relationship="Self.FK_EntranceHistory_Facility" FromRole="Facility" ToRole="EntranceHistory" />
         </EntityType>
         <EntityType Name="PaymentHistory">
           <Key>
@@ -692,9 +712,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AddressId" Type="Int32" />
           <Property Name="ContactId" Type="Int32" />
           <Property Name="SubscriptionPlanId" Type="Int32" />
@@ -927,6 +947,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EntranceHistory_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="1" />
+          <End Role="EntranceHistory" Type="Self.EntranceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EntranceHistory">
+              <PropertyRef Name="FacilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PaymentHystory_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="PaymentHistory" Type="Self.PaymentHistory" Multiplicity="*" />
@@ -1034,6 +1066,10 @@
           <AssociationSet Name="FK_PersonalDetails_Contact" Association="Self.FK_PersonalDetails_Contact">
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntranceHistory_Facility" Association="Self.FK_EntranceHistory_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="EntranceHistory" EntitySet="EntranceHistories" />
           </AssociationSet>
           <AssociationSet Name="FK_PaymentHystory_Product" Association="Self.FK_PaymentHystory_Product">
             <End Role="Product" EntitySet="Products" />
@@ -1172,6 +1208,7 @@
               <MappingFragment StoreEntitySet="EntranceHistory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
                 <ScalarProperty Name="EntryStatus" ColumnName="EntryStatus" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />

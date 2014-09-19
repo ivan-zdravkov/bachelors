@@ -14,6 +14,11 @@ namespace InternalDAL
     
     public partial class Facility
     {
+        public Facility()
+        {
+            this.EntranceHistories = new HashSet<EntranceHistory>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> DeviceId { get; set; }
@@ -28,5 +33,6 @@ namespace InternalDAL
         public virtual Address Address { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Contact Contact { get; set; }
+        public virtual ICollection<EntranceHistory> EntranceHistories { get; set; }
     }
 }

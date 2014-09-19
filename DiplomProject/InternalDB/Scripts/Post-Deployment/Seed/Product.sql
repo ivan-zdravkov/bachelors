@@ -20,4 +20,9 @@ INSERT [dbo].[Product] ([Id], [ProductTypeId], [IsActive], [Name], [Display], [V
 INSERT [dbo].[Product] ([Id], [ProductTypeId], [IsActive], [Name], [Display], [Value], [Currency], [CreatedBy], [CreatedAt]) 
 	VALUES (8, 2, 1, N'12 Month Subscription', N'12', N'279.99', N'BGN', N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
 
+INSERT [dbo].[Product] ([Id], [ProductTypeId], [IsActive], [Name], [Display], [Value], [Currency], [CreatedBy], [CreatedAt]) 
+	VALUES (9, 3, 1, N'PracticeCostBGN', N'', N'2.99', N'BGN', N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
+INSERT [dbo].[Product] ([Id], [ProductTypeId], [IsActive], [Name], [Display], [Value], [Currency], [CreatedBy], [CreatedAt]) 
+	VALUES (10, 3, 1, N'PracticeCostCredits', N'', N'10.00', N'CRD', N'3bed7cb8-3c46-4312-a5dd-c407f377a587', GETDATE())
+
 SET IDENTITY_INSERT [dbo].[Product] OFF
