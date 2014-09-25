@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebSite.EntityFramework;
+using WebSite.Models;
 
 namespace WebSite.WebApi
 {
+    [AllowAnonymous]
     public class AccessControlController : BaseApiController
     {
         [HttpPost]
@@ -43,6 +45,14 @@ namespace WebSite.WebApi
         {
             HttpResponseMessage response = new HttpResponseMessage();
             response.StatusCode = HttpStatusCode.Unauthorized;
+
+            return response;
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CardDetected (AccessControlModel model)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
 
             return response;
         }

@@ -26,7 +26,7 @@ namespace WebSite
         private void RegisterCors(MvcCorsConfiguration corsConfig)
         {
             corsConfig
-               .ForResources("Payment")
+               .ForResources("*")
                .ForOrigins("*")
                .AllowAll();
         }

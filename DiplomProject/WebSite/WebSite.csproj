@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Global\GlobalConstants.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Models\AccessControlModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Payment\PayPalCheckoutInfo.cs" />
