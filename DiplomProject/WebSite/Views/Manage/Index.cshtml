@@ -35,10 +35,10 @@
                 path = "/manage/getUsers";
             }
             else {
-                path = "tufitness/manage/getUsers"
+                path = "tufitness/manage/getUsers";
             }
                 
-            $.getJSON("path").success(function (data) {
+            $.getJSON(path).success(function (data) {
                 var users = [];
                 for (var i in data)
                 {
