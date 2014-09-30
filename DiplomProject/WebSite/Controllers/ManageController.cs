@@ -18,6 +18,7 @@ namespace WebSite.Controllers
         }
 
         [AllowAnonymous]
+        
         public JsonResult GetUsers()
         {
             IEnumerable<AspNetUser> users = DB.AspNetUsers.ToList();
