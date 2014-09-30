@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using WebSite.Models;
 using WebSite.EntityFramework;
+using InternalDAL;
 
 namespace WebSite.Controllers
 {
@@ -83,7 +84,22 @@ namespace WebSite.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
+                    AspNetUser aspNetUser = DB.AspNetUsers.Where(u => u.UserName == model.UserName).SingleOrDefault();
+                    AspNetRole aspNetRole = DB.AspNetRoles.Where(r => r.Name == "Client").SingleOrDefault();
+                    aspNetUser.AspNetUserRoles.Add(new AspNetUserRole { UserId = aspNetUser.Id, RoleId = aspNetRole.Id });
+                    aspNetUser.PersonalDetail = new PersonalDetail
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        SubscriptionPlan = new SubscriptionPlan
+                        {
+                            ActiveUntil = DateTime.Today.AddDays(-1),
+                            Credits = 0,
+                            UnlimitedAccess = false
+                        }
+                    };
+                    DB.SaveChanges();
+                    //await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -278,6 +294,9 @@ namespace WebSite.Controllers
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    AspNetUser aspNetUser = DB.AspNetUsers.Where(u => u.UserName == model.UserName).SingleOrDefault();
+                    AspNetRole aspNetRole = DB.AspNetRoles.Where(r => r.Name == "Client").SingleOrDefault();
+                    aspNetUser.AspNetUserRoles.Add(new AspNetUserRole { UserId = aspNetUser.Id, AspNetRole = aspNetRole });
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);

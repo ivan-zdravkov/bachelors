@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebSite.Models.Log.EntranceHistoryItemModel>
+
+@{
+    ViewBag.Title = "Visits";
+}
+
+<h2>@Resources.VisitsLog</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntryStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityName)
+        </td>
+    </tr>
+}
+
+</table>

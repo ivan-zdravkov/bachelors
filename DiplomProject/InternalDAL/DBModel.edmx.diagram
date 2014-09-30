@@ -4,35 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cfbaaf71bf304bf7918d266bfb2e8fce" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="InternalDBModel.Address" Width="1.5" PointX="0.625" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetRole" Width="1.5" PointX="2.25" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserClaim" Width="1.5" PointX="11.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserLogin" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUserRole" Width="1.5" PointX="4.125" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.AspNetUser" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.Card" Width="1.5" PointX="11.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.Contact" Width="1.5" PointX="2.375" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.EntranceHistory" Width="1.5" PointX="7.875" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.Facility" Width="1.5" PointX="4.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.PaymentHistory" Width="1.5" PointX="7.875" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.PersonalDetail" Width="1.5" PointX="0.625" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.Product" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.ProductType" Width="1.5" PointX="11.625" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InternalDBModel.SubscriptionPlan" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+      <Diagram DiagramId="7b24e32775c44736966e0b1753d801d2" Name="Diagram1">
+        <EntityTypeShape EntityType="InternalDBModel.Address" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetRole" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserClaim" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserLogin" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUserRole" Width="1.5" PointX="13.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.AspNetUser" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.Card" Width="1.5" PointX="10.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.Contact" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.EntranceHistory" Width="1.5" PointX="12.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.Facility" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.PaymentHistory" Width="1.5" PointX="13.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.PersonalDetail" Width="1.5" PointX="6" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.Product" Width="1.5" PointX="11.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.ProductType" Width="1.5" PointX="9" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InternalDBModel.SubscriptionPlan" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
         <AssociationConnector Association="InternalDBModel.FK_Facility_Address" ManuallyRouted="false" />
-        <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_Address" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="InternalDBModel.FK_PersonalDetails_Address" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_AspNetUserRoles_AspNetRole" ManuallyRouted="false" />
-        <AssociationConnector Association="InternalDBModel.FK_AspNetUserClaims_AspNetUsers" ManuallyRouted="false" >
-        </AssociationConnector>
+        <AssociationConnector Association="InternalDBModel.FK_AspNetUserClaims_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_AspNetUserLogins_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_AspNetUserRoles_AspNetUser" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_AspNetUsers_PersonalDetails" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_Card_UserProfile" ManuallyRouted="false" />
-        <AssociationConnector Association="InternalDBModel.FK_Facility_AspNetUsers" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="InternalDBModel.FK_PaymentHystory_Issuer" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="InternalDBModel.FK_Facility_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="InternalDBModel.FK_PaymentHystory_Issuer" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_PaymentHystory_Recepient" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_EntranceHistory_Card" ManuallyRouted="false" />
         <AssociationConnector Association="InternalDBModel.FK_Facility_Contact" ManuallyRouted="false" />

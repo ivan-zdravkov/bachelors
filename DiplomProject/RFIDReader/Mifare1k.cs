@@ -14,9 +14,6 @@ namespace RFIDReader
         static extern void Sleep(int dwMilliseconds);
 
         [DllImport("MasterRD.dll")]
-        static extern int lib_ver(ref uint pVer);
-
-        [DllImport("MasterRD.dll")]
         static extern int rf_init_com(int port, int baud);
 
         [DllImport("MasterRD.dll")]
@@ -38,31 +35,13 @@ namespace RFIDReader
         static extern int rf_select(short icdev, IntPtr pSnr, byte srcLen, ref sbyte Size);
 
         [DllImport("MasterRD.dll")]
-        static extern int rf_halt(short icdev);
-
-        [DllImport("MasterRD.dll")]
         static extern int rf_M1_authentication2(short icdev, byte mode, byte secnr, IntPtr key);
-
-        [DllImport("MasterRD.dll")]
-        static extern int rf_M1_initval(short icdev, byte adr, Int32 value);
-
-        [DllImport("MasterRD.dll")]
-        static extern int rf_M1_increment(short icdev, byte adr, Int32 value);
-
-        [DllImport("MasterRD.dll")]
-        static extern int rf_M1_decrement(short icdev, byte adr, Int32 value);
-
-        [DllImport("MasterRD.dll")]
-        static extern int rf_M1_readval(short icdev, byte adr, ref Int32 pValue);
 
         [DllImport("MasterRD.dll")]
         static extern int rf_M1_read(short icdev, byte adr, IntPtr pData, ref byte pLen);
 
         [DllImport("MasterRD.dll")]
         static extern int rf_get_device_number(out ushort pIcdev);
-
-        [DllImport("MasterRD.dll")]
-        static extern int rf_M1_write(short icdev, byte adr, IntPtr pData);
 
         [DllImport("MasterRD.dll")]
         static extern int rf_beep(short icdev, short msec);
@@ -125,42 +104,13 @@ namespace RFIDReader
             return icdev;
         }
 
-        public void Authenticate(short icdev, char model, char block, string key)
-        {
-            IntPtr intPtr = new IntPtr();
-
-            try
-            {
-                intPtr = Marshal.StringToHGlobalUni(key);
-
-                int authenticationStatus = rf_M1_authentication2(icdev,
-                    ToDigitsBytes(model.ToString())[0],
-                    ToDigitsBytes(block.ToString())[0],
-                    intPtr);
-                if (authenticationStatus == 0)
-                {
-                    Console.WriteLine("Card Successfully Authenticated");
-                    rf_beep(icdev, short.Parse("10"));
-                }
-                else
-                {
-                    Console.WriteLine("Card Failed to Authenticate");
-                    rf_beep(icdev, short.Parse("99"));
-                }
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(intPtr);
-            }
-        }
-
         public string ReadCard(short icdev)
         {
             int status;
             byte type = (byte)'A'; // Mifare Type A
             byte mode = 0x52;
             ushort TagType = 0;
-            byte bcnt = 0x04;//mifare 卡都用4
+            byte bcnt = 0x04;
             IntPtr pSnr;
             byte len = 255;
             sbyte size = 0;
@@ -257,14 +207,14 @@ namespace RFIDReader
                 for (j = 0; j < bytesData.Length; j++)
                     bytesData[j] = Marshal.ReadByte(dataBuffer, j);
 
-                if (i == 0)
+                if (i == blockNumber)
                     return ToHexString(bytesData);
             }
 
             throw new Exception("Unsucessful Read!");
         }
 
-        public static byte GetHexBitsValue(byte ch)
+        private static byte GetHexBitsValue(byte ch)
         {
             byte sz = 0;
             if (ch <= '9' && ch >= '0')
@@ -279,7 +229,7 @@ namespace RFIDReader
         //
 
         #region byteHEX
-        public static String byteHEX(Byte ib)
+        private static String byteHEX(Byte ib)
         {
             String _str = String.Empty;
             try
@@ -293,14 +243,14 @@ namespace RFIDReader
             }
             catch (Exception)
             {
-                new Exception("对不起有错。");
+                new Exception("Unsuccessful byte to hex convertion!");
             }
             return _str;
 
         }
         #endregion
 
-        public static string ToHexString(byte[] bytes)
+        private static string ToHexString(byte[] bytes)
         {
             String hexString = String.Empty;
             for (int i = 0; i < bytes.Length; i++)
@@ -309,7 +259,7 @@ namespace RFIDReader
             return hexString;
         }
 
-        public static byte[] ToDigitsBytes(string theHex)
+        private static byte[] ToDigitsBytes(string theHex)
         {
             byte[] bytes = new byte[theHex.Length / 2 + (((theHex.Length % 2) > 0) ? 1 : 0)];
             for (int i = 0; i < bytes.Length; i++)

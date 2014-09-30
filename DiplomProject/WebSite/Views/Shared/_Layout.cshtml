@@ -29,8 +29,19 @@
                         <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
                         @if (Request.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink(Resources.VisitsLog, "Visits", "Log")</li>
-                            <li>@Html.ActionLink(Resources.PaymentsLog, "Payments", "Log")</li>
+                            if (this.User.IsInRole("Client"))
+                            { 
+                                <li>@Html.ActionLink(Resources.VisitsLog, "Visits", "Log")</li>
+                                <li>@Html.ActionLink(Resources.PaymentsLog, "Payments", "Log")</li>
+                            }
+                            if(this.User.IsInRole("Administrator"))
+                            { 
+                                <li>@Html.ActionLink(Resources.AdminPanel, "Index", "Admin")</li>
+                            }
+                            if (this.User.IsInRole("Administrator") || this.User.IsInRole("FacilityManager") || this.User.IsInRole("Receptionist"))
+                            {
+                                <li>@Html.ActionLink(Resources.ManagerPanel, "Index", "Manage")</li>
+                            }
                         }
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -47,7 +58,7 @@
 
                     @if (Request.IsAuthenticated)
                     {
-                        SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
+                            SubscriptionCreditsModel model = (new SubscriptionController()).GetSubscriptionCredits(User.Identity.GetUserId());
 
                         if (model != null && this.ViewContext.RouteData.GetRequiredString("controller") != "Subscription")
                         {
@@ -60,7 +71,7 @@
                                     }
                                     else
                                     {
-                                        @Html.ActionLink(Resources.ActiveUntil + " " + (model.ActiveUntil.HasValue ? model.ActiveUntil.Value.ToString("dd/MM/yyyy") : "--/--/----"), "Index", "Subscription", new { }, new { style = "color: red;" })
+                                        @Html.ActionLink(Resources.NoActiveSubsription, "Index", "Subscription", new { }, new { style = "color: red;" })
                                     }
                                     <span>|</span>
                                     if (model.Credits > 0)
@@ -92,6 +103,7 @@
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/knockout")
         @RenderSection("scripts", required: false)
     </body>
 

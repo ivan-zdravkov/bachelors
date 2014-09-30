@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebSite.EntityFramework;
 using WebSite.Helpers;
+using WebSite.Models;
 
 namespace WebSite.Controllers
 {
@@ -19,15 +20,23 @@ namespace WebSite.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            ViewBag.PracticeCostCredits = DB.Products.Where(product => product.Name == "PracticeCostCredits").FirstOrDefault().Value.ToString().Split('.')[0].Split(',')[0];
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            IEnumerable<ContactModel> model = DB.Facilities.Select(facility => new ContactModel
+            {
+                Name = facility.Name,
+                ManagerName = facility.AspNetUser.PersonalDetail.FirstName + " " + facility.AspNetUser.PersonalDetail.LastName,
+                Address = facility.Address.Country + ", " + facility.Address.PostCode + " - " + facility.Address.Town + ", " + facility.Address.Address1,
+                GSM = facility.Contact.GSM,
+                Phone = facility.Contact.Phone
+            }).ToList();
 
-            return View();
+            return View(model);
         }
 
         public ActionResult SetCulture(string culture)

@@ -27,7 +27,8 @@ namespace WebSite.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 6, ErrorMessageResourceType = typeof(Resources.Resources), ErrorMessageResourceName = "MinLength")]
+        [StringLength(100, MinimumLength = 6, ErrorMessageResourceType = typeof(Resources.Resources), 
+            ErrorMessageResourceName = "MinLength")]
         [DataType(DataType.Password)]
         [Display(Name = "NewPassword", ResourceType = typeof(Resources.Resources))]
         public string NewPassword { get; set; }
@@ -76,5 +77,13 @@ namespace WebSite.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "FirstName", ResourceType = typeof(Resources.Resources))]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "LastName", ResourceType = typeof(Resources.Resources))]
+        public string LastName { get; set; }
     }
 }

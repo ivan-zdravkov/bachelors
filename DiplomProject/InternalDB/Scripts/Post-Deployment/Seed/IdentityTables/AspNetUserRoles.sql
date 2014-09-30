@@ -1,8 +1,6 @@
 ﻿-- dbo.AspNetUserRoles
 
 INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId], CreatedAt)
-	VALUES (N'3bed7cb8-3c46-4312-a5dd-c407f377a587', N'2a148a58-c3a3-4126-9d61-4a4fb6c932d6', GETDATE())
-INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId], CreatedAt)
 	VALUES (N'56e744bb-1619-41a7-9828-76083c50cbdb', N'30dce180-a3ac-4b9f-a63a-40354da0c7d2', GETDATE())
 INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId], CreatedAt)
 	VALUES (N'001e2bfd-cac1-4584-8a49-93e9102fa019', N'86f3102e-51be-4349-b1d0-5dc15f0a330e', GETDATE())

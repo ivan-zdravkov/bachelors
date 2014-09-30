@@ -13,13 +13,14 @@ namespace RFIDReader
 {
     public class RFIDReader
     {
-        public static string baseUri = "http://localhost:3761/";
-        //public static string baseUri = "http://83.148.87.159/TUFitness/";
+        //public static string baseUri = "http://localhost:3761/";
+        public static string baseUri = "http://83.148.87.159/TUFitness/";
 
-        public static string URI = "http://localhost:3761/api/AccessControl/CardDetected";
-        //public static string URI = "http://83.148.87.159/TUFitness/api/AccessControl/CardDetected";
+        //public static string URI = "http://localhost:3761/api/AccessControl/CardDetected";
+        public static string URI = "http://83.148.87.159/TUFitness/api/AccessControl/CardDetected";
 
         public static string lastCardRead = String.Empty;
+        public static DateTime lastPersonEnteredAt = DateTime.Now;
 
         public static void Main(string[] args)
         {
@@ -50,27 +51,31 @@ namespace RFIDReader
                         string cardNumber = reader.ReadCard(icdev);
                         if (cardNumber == lastCardRead)
                         {
-                            continue;
+                            if (DateTime.Now - lastPersonEnteredAt < new TimeSpan(0, 2, 0)) // 2 minutes since last authenticate of same user.
+                            {
+                                continue;
+                            }
                         }
 
-                        string userDetails = reader.ReadBlock(icdev, 'B', keyB, 0, 0);
+                        string userDetails = reader.ReadBlock(icdev, 'B', keyB, 0, 1);
 
                         bool successful = PostData(icdev, cardNumber, userDetails);
+                        
+                        reader.ChangeColor(icdev, 1);
+                        
                         if (successful)
                         {
                             reader.Beep(icdev, 10);
-                            reader.ChangeColor(icdev, 1);
-                            lastCardRead = cardNumber;
-                            Thread.Sleep(2000);
-                            reader.ChangeColor(icdev, 2);
                         }
                         else
                         {
-                            reader.ChangeColor(icdev, 1);
                             reader.Beep(icdev, 99);
-                            Thread.Sleep(2000);
-                            reader.ChangeColor(icdev, 2);
                         }
+                        
+                        lastCardRead = cardNumber;
+                        lastPersonEnteredAt = DateTime.Now;
+                        Thread.Sleep(2000);
+                        reader.ChangeColor(icdev, 2);
                     }
                     catch (Exception ex)
                     {

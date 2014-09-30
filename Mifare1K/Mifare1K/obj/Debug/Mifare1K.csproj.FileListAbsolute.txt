@@ -1,0 +1,17 @@
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.exe
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.pdb
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\bin\Debug\Mifare1K.exe
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\bin\Debug\Mifare1K.pdb
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.Mifare_1K.resources
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.Properties.Resources.resources
+C:\Users\Ivan\Desktop\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.csproj.GenerateResource.Cache
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.exe
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.pdb
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\bin\Debug\Mifare1K.exe.config
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\bin\Debug\Mifare1K.exe
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\bin\Debug\Mifare1K.pdb
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.csprojResolveAssemblyReference.cache
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.Mifare_1K.resources
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.Properties.Resources.resources
+C:\RFIDREADER\EXAMPLE\C#\Mifare1K\Mifare1K\obj\Debug\Mifare1K.csproj.GenerateResource.Cache

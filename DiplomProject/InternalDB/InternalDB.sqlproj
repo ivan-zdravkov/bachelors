@@ -118,4 +118,7 @@
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\Seed\Product.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Post-Deployment\Seed\Card.sql" />
+  </ItemGroup>
 </Project>

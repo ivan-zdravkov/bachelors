@@ -288,4 +288,76 @@
   <data name="TUSite" xml:space="preserve">
     <value>Сайт на технически университет</value>
   </data>
+  <data name="AdminPanel" xml:space="preserve">
+    <value>Администрация</value>
+  </data>
+  <data name="ManagerPanel" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Номер на карта</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Facility" xml:space="preserve">
+    <value>Помещение</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Платил</value>
+  </data>
+  <data name="PayPalEmail" xml:space="preserve">
+    <value>PayPal Email</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="Recepient" xml:space="preserve">
+    <value>Приел</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статут</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Време</value>
+  </data>
+  <data name="CardData" xml:space="preserve">
+    <value>Данни за картата</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Потребители</value>
+  </data>
+  <data name="UnsuccessfulDataSave" xml:space="preserve">
+    <value>Неуспешен запис на данни</value>
+  </data>
+  <data name="EnterNewCard" xml:space="preserve">
+    <value>Въведете нов номер на карта</value>
+  </data>
+  <data name="NoActiveSubsription" xml:space="preserve">
+    <value>Няма активен абонамент</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Име</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="PracticeCost" xml:space="preserve">
+    <value>Цена на тренировка</value>
+  </data>
+  <data name="AboutContent" xml:space="preserve">
+    <value>Добре дошли на страниците на ТУ Фитнес. В момента разполагаме с фитнес зали в София, Пловдив и Сливен. Моля регистрирайте си акаунт и заповядайте да се регистрирате в системата за да получите достъп до повече информация. Можете да заплатите фитнес членството си онлайн или да предплатите брой кредити, които да използвате за вход в залата. (Цена на тренировка: {0} кредита). Преди да продължите, имайте предвид, че този фитнес НЕ Е изтински фитнес. Уебсайтът на който в момента се намирате е разработен от Иван Здравков, като част от неговата дипломна защита в Технически Университет София - филиал Пловдив.</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Управител</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
 </root>

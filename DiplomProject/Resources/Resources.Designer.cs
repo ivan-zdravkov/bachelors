@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добре дошли на страниците на ТУ Фитнес. В момента разполагаме с фитнес зали в София, Пловдив и Сливен. Моля регистрирайте си акаунт и заповядайте да се регистрирате в системата за да получите достъп до повече информация. Можете да заплатите фитнес членството си онлайн или да предплатите брой кредити, които да използвате за вход в залата. (Цена на тренировка: {0} кредита). Преди да продължите, имайте предвид, че този фитнес НЕ Е изтински фитнес. Уебсайтът на който в момента се намирате е разработен от Иван З [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string AboutContent {
+            get {
+                return ResourceManager.GetString("AboutContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Акаунт.
         /// </summary>
         public static string Account {
@@ -84,6 +93,24 @@ namespace Resources {
         public static string ActiveUntil {
             get {
                 return ResourceManager.GetString("ActiveUntil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Адрес.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Администрация.
+        /// </summary>
+        public static string AdminPanel {
+            get {
+                return ResourceManager.GetString("AdminPanel", resourceCulture);
             }
         }
         
@@ -120,6 +147,24 @@ namespace Resources {
         public static string Bulgarian {
             get {
                 return ResourceManager.GetString("Bulgarian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Данни за картата.
+        /// </summary>
+        public static string CardData {
+            get {
+                return ResourceManager.GetString("CardData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Номер на карта.
+        /// </summary>
+        public static string CardNumber {
+            get {
+                return ResourceManager.GetString("CardNumber", resourceCulture);
             }
         }
         
@@ -223,6 +268,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дата.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрирайте се.
         /// </summary>
         public static string DoRegister {
@@ -259,6 +313,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Въведете нов номер на карта.
+        /// </summary>
+        public static string EnterNewCard {
+            get {
+                return ResourceManager.GetString("EnterNewCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Моля въведете потребителско име за този сайт и натиснете бутона за Регистрация за да създадете своя акунт и да влезете в системата..
         /// </summary>
         public static string EnterUserName {
@@ -282,6 +345,24 @@ namespace Resources {
         public static string ErrorProcessingRequest {
             get {
                 return ResourceManager.GetString("ErrorProcessingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Помещение.
+        /// </summary>
+        public static string Facility {
+            get {
+                return ResourceManager.GetString("Facility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Име.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
             }
         }
         
@@ -322,6 +403,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Платил.
+        /// </summary>
+        public static string Issuer {
+            get {
+                return ResourceManager.GetString("Issuer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фамилия.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход.
         /// </summary>
         public static string LogIn {
@@ -358,6 +457,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Управител.
+        /// </summary>
+        public static string Manager {
+            get {
+                return ResourceManager.GetString("Manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Управление.
+        /// </summary>
+        public static string ManagerPanel {
+            get {
+                return ResourceManager.GetString("ManagerPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} не трябва да е повече от {1} символа..
         /// </summary>
         public static string MaxLength {
@@ -385,6 +502,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Име.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Нова парола.
         /// </summary>
         public static string NewPassword {
@@ -399,6 +525,15 @@ namespace Resources {
         public static string NewPasswordMismatch {
             get {
                 return ResourceManager.GetString("NewPasswordMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Няма активен абонамент.
+        /// </summary>
+        public static string NoActiveSubsription {
+            get {
+                return ResourceManager.GetString("NoActiveSubsription", resourceCulture);
             }
         }
         
@@ -439,6 +574,51 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PayPal Email.
+        /// </summary>
+        public static string PayPalEmail {
+            get {
+                return ResourceManager.GetString("PayPalEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Телефон.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Цена на тренировка.
+        /// </summary>
+        public static string PracticeCost {
+            get {
+                return ResourceManager.GetString("PracticeCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продукт.
+        /// </summary>
+        public static string Product {
+            get {
+                return ResourceManager.GetString("Product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Приел.
+        /// </summary>
+        public static string Recepient {
+            get {
+                return ResourceManager.GetString("Recepient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрация.
         /// </summary>
         public static string Register {
@@ -475,6 +655,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Статут.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Абонамент.
         /// </summary>
         public static string Subscription {
@@ -493,6 +682,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Време.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сайт на технически университет.
         /// </summary>
         public static string TUSite {
@@ -507,6 +705,15 @@ namespace Resources {
         public static string UnlimitedAccess {
             get {
                 return ResourceManager.GetString("UnlimitedAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неуспешен запис на данни.
+        /// </summary>
+        public static string UnsuccessfulDataSave {
+            get {
+                return ResourceManager.GetString("UnsuccessfulDataSave", resourceCulture);
             }
         }
         
@@ -543,6 +750,15 @@ namespace Resources {
         public static string UserName {
             get {
                 return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Потребители.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

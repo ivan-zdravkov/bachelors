@@ -199,8 +199,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="EntityFramework\BaseApiController.cs" />
@@ -210,11 +212,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Global\GlobalConstants.cs" />
+    <Compile Include="App_Start\GlobalConstants.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Models\AccessControlModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Log\EntranceHistoryItemModel.cs" />
+    <Compile Include="Models\Log\PaymentHistoryItemModel.cs" />
+    <Compile Include="Models\Manage\NewCardModel.cs" />
+    <Compile Include="Models\Manage\UserItemModel.cs" />
     <Compile Include="Models\Payment\PayPalCheckoutInfo.cs" />
     <Compile Include="Models\Payment\PayPalListenerModel.cs" />
     <Compile Include="Models\Subscription\ProductModel.cs" />
@@ -276,10 +283,12 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Subscription\Index.cshtml" />
+    <Content Include="Views\Log\Visits.cshtml" />
+    <Content Include="Views\Log\Payments.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\Log\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>

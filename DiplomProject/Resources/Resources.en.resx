@@ -288,4 +288,79 @@
   <data name="TUSite" xml:space="preserve">
     <value>Techical University Site</value>
   </data>
+  <data name="AdminPanel" xml:space="preserve">
+    <value>Administrate</value>
+  </data>
+  <data name="ManagerPanel" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Facility" xml:space="preserve">
+    <value>Facility</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Issuer</value>
+  </data>
+  <data name="PayPalEmail" xml:space="preserve">
+    <value>PayPal Email</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Recepient" xml:space="preserve">
+    <value>Recepient</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="CardData" xml:space="preserve">
+    <value>Card Data</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UnsuccessfulDataSave" xml:space="preserve">
+    <value>Unsuccessful Data Save</value>
+  </data>
+  <data name="EnterNewCard" xml:space="preserve">
+    <value>Enter New Card Number</value>
+  </data>
+  <data name="NoActiveSubsription" xml:space="preserve">
+    <value>No active subscription</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PracticeCost" xml:space="preserve">
+    <value>Practice Cost</value>
+  </data>
+  <data name="AboutContent" xml:space="preserve">
+    <value>Welcome to the pages of TU Fitness. We currently have facilities in Sofia, Plovdiv and Sliven. Please register an account and be welcome to register in the system to gain access to more information. You can pay for your fitness membership online or pay by prepurchased credits. (Practice cost: {0} credits). Before you continue, have in mind that this fitness is NOT a real fitness. The website you are currently on was developed by Ivan Zdravkov as a part of his Diplom Project assignment in The Technical University of Sofia - branch Plovdiv.</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Manager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Address</value>
+  </data>
 </root>

@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Resources.ManagerPanel</h2>
+
+<input placeholder="Search…" id="searchUsers">
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Resources.UserName</th>
+            <th>@Resources.Name</th>
+            <th>@Resources.CardData</th>
+            <th>@Resources.CardNumber</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: searchedUsers">
+        <tr>
+            <td data-bind="text: UserName"></td>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: CardData"></td>
+            <td data-bind="text: CardNumber"></td>
+            <td><a class="edit" href="#" data-bind="attr: { id: CardData }">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.getJSON("/manage/getUsers").success(function (data) {
+                var users = [];
+                for (var i in data)
+                {
+                    var user = data[i];
+                    users.push(user);
+                }
+
+                function UsersModel(search) {
+                    var self = this;
+                    self.users = ko.observableArray(users);
+                    self.searchedUsers = ko.observableArray(users);
+
+                    self.searchUsers = function (word) {
+                        self.reset();
+
+                        for (var i = self.searchedUsers().length - 1; i >= 0; i--)
+                        {
+                            var user = self.searchedUsers()[i];
+                            if ((user.Name.indexOf(word) == -1) && (user.UserName.indexOf(word) == -1))
+                            {
+                                self.searchedUsers.splice(i, 1);
+                            }
+                        }
+                    }
+                    
+                    self.reset = function () {
+                        for (var i in data)
+                        {
+                            var user = data[i];
+                            var found = false;
+
+                            for (var i = 0; i < self.searchedUsers().length; i++) {
+                                var searchedUser = self.searchedUsers()[i];
+                                if (searchedUser.UserName == user.UserName) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (!found)
+                            {
+                                self.searchedUsers.push(user);
+                            }
+                        }
+                    }
+                }
+
+                model = new UsersModel();
+                ko.applyBindings(model);
+
+                $('#searchUsers').keyup(function () {
+                    var word = $('#searchUsers').val();
+
+                    model.searchUsers(word);
+                });
+
+                $('.edit').click(function () {
+                    var id = $(this).attr('id');
+
+                    var cardId = prompt('@Resources.EnterNewCard', '@Resources.CardNumber');
+
+                    if (cardId != null) {
+                        var data = {
+                            UserId: id,
+                            CardId: cardId
+                        };
+
+                        $.post('manage/changeCard', data, function (response) {
+                            if (response == true)
+                            {
+                                location.reload(true);
+                            }
+                            else 
+                            {
+                                alert('@Resources.UnsuccessfulDataSave');
+                            }
+                        }, 'json');
+                    }
+                });
+            })
+        })
+    </script>
+}
+
+

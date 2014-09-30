@@ -18,6 +18,10 @@
 :r .\IdentityTables\AspNetUsers.sql
 ----------------------------------------------
 
+-- REQUIRES dbo.AspNetUsers
+:r .\Card.sql
+----------------------------------------------
+
 -- REQUIRES dbo.AspNetRoles, dbo.AspNetUsers
 :r .\IdentityTables\AspNetUserRoles.sql
 ----------------------------------------------

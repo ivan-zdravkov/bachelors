@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebSite.Models.Log.PaymentHistoryItemModel>
+
+@{
+    ViewBag.Title = "Payments";
+}
+
+<h2>@Resources.PaymentsLog</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecepientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayPalEmail)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssuerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecepientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayPalEmail)
+            </td>
+        </tr>
+    }
+
+</table>
