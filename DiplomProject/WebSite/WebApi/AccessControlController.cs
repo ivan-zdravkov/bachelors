@@ -31,22 +31,11 @@ namespace WebSite.WebApi
 
             decimal price = DB.Products.Where(p => p.Name == "PracticeCostCredits" && p.IsActive == true).FirstOrDefault().Value;
 
-            List<EntranceHistory> entrances = DB.EntranceHistories.Where(eh => eh.Card.CardId == model.CardNumber).ToList();
-            foreach (var entrance in entrances)
-            {
-                if (entrance.CreatedAt.Value.AddHours(2) > DateTime.Now)
-                {
-                    return response;
-                }
-            }
-
             if (user.PersonalDetail.SubscriptionPlan.UnlimitedAccess)
             {
-                return response;
             }
             else if (user.PersonalDetail.SubscriptionPlan.ActiveUntil >= DateTime.Today)
             {
-                return response;
             }
             else if (user.PersonalDetail.SubscriptionPlan.Credits >= price)
             {
@@ -59,7 +48,7 @@ namespace WebSite.WebApi
                 {
                     CardId = card.Id,
                     FacilityId = facility.Id,
-                    EntryStatus = true,
+                    EntryStatus = false,
                 });
                 DB.SaveChanges();
 
