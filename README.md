@@ -1,7 +1,7 @@
 # IVAN ZDRAVKOV  #
 
-## GRADUATION THESIS REVIEW
-DESIGN AND IMPLEMENTATION OF A SYSTEM FOR ONLINE PAYMENTS AND ACCESS TO SERVICES ##
+## GRADUATION THESIS REVIEW ##
+## DESIGN AND IMPLEMENTATION OF A SYSTEM FOR ONLINE PAYMENTS AND ACCESS TO SERVICES ##
 
 Following the exact structure of the graduation thesis, a simple review of the chapters and points made in the thesis will be presented below. A URL containing the original thesis in Bulgarian [Дипломна работа - Иван Здравков.docx](https://bitbucket.org/ivanzdravkovdiplomproject/diplom-project/src/a65674b14aee1b2be7742553484562b447e7fca8/%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D0%B0%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20-%20%D0%98%D0%B2%D0%B0%D0%BD%20%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D0%BA%D0%BE%D0%B2.docx?at=develop) and the source code can be found at chapter 8 of the following review.
 
