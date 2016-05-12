@@ -1,6 +1,4 @@
-# Ivan Zdravkov - Graduation Thesis #
-
-## Design and implementation of a system for online payments and access to services ##
+# Ivan Zdravkov - Design and implementation of a system for online payments and access to services #
 
 * An English review of the graduation thesis (originally in bulgarian) can be downloaded here: [English Review.docx](https://bitbucket.org/ivanzdravkovdiplomproject/diplom-project/src/78b51d42ddcfc7057429f4af163259b164e532d5/English%20Review.docx?fileviewer=file-view-default)
 
