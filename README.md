@@ -49,9 +49,9 @@ Following the exact structure of the graduation thesis, a simple review of the c
     2.2. Razor View Engine – the Engine helps build HTML as .cshtml templates. This allows us to build basic HTML pages in the back end using the computing power of the server as well as C#.
 
     2.3. Designing the _Layout page – the _Layout page is the master page of the application that holds the basic UI elements such as the headers, footers, menus, etc. All other HTML content is injected into this page.
-	2.3.1. Navigation – a review of the navigation HTML 
-	2.3.2. Body - a review of the body HTML
-	2.3.3. Footer - a review of the footer HTML
+* 2.3.1. Navigation – a review of the navigation HTML 
+* 2.3.2. Body - a review of the body HTML
+* 2.3.3. Footer - a review of the footer HTML
 
     ### 2.4. CSS styles ### - a review of the CSS styles used in the application
 
