@@ -42,7 +42,7 @@ Following the exact structure of the graduation thesis, a simple review of the c
 ```
 
 
-## Chapter 2 – Designing the elements of the user interface ##
+Chapter 2 – Designing the elements of the user interface
 
     ### 2.1. Multi-language support through .resx files ### – the application is implemented in English and Bulgarian languages. The .resx files are Key-Value files that hold word names in the Key field and the translated word in Value field. With the use of a different file, you can employ multiple language support for an unlimited number of languages.
 
